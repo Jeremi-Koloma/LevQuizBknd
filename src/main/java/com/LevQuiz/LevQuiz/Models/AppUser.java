@@ -22,8 +22,6 @@ public class AppUser {
     @Column(updatable = false, nullable = false) // à revoir après
     private Long id;
 
-    // Ce champ est unqiue
-    @Column(unique = true)
     private String username;
 
     private String password;
