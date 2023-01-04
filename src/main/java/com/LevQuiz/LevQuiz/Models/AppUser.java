@@ -36,13 +36,8 @@ public class AppUser {
     @OneToMany(mappedBy = "appUser", cascade = CascadeType.ALL, fetch = FetchType.EAGER) // un utilisateur peut avoir un ou plusieurs userRoles (1..*)
     private Set<UserRole> userRoles = new HashSet<>();
 
-    // cascade, quand on supprime l'utilisateur, on le supprime avec ses Quiz aussi
-    // FetchType.LAZY, en chargent l'utilisateur, n'affiche pas ses Quiz.
-    @OneToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY) // un utilisateur peut créer un ou plusieurs Quiz (1..*)
-    private List<Quiz> quizList;
-
     // cascade, quand on supprime un utilisateur, on le supprime avec ses Notifications aussi
     // FetchType.LAZY, en chargent l'utilisateur, n'affiche pas ses Notifications
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY) // un utilisateur peut avoir plusieurs Notifications (1..*)
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY) // un utilisateur peut avoir plusieurs Notifications vise vers ça
     private List<Notifications> notificationsList;
 }

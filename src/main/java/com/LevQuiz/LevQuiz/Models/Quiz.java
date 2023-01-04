@@ -7,7 +7,6 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.Date;
-import java.util.List;
 
 @Entity // Identifier cette classe comme une table dans la base de donnée
 @NoArgsConstructor // Généré un constructeur sans paramètre
@@ -23,5 +22,9 @@ public class Quiz {
     private String titre;
     private String description;
     private Date quizDate;
+
+    // FetchType.EAGER, en chargent le Quiz, affiche l'utilisateur aussi
+    @ManyToOne(fetch = FetchType.EAGER) // Plusieurs Quiz peuvent être créer par un seul utilisateur (*..1)
+    private AppUser appUser;
 
 }
