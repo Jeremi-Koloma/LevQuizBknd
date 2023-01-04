@@ -5,18 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1a2214e6-822e-4e6c-9522-5510a335b930" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/dbnavigator.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/LevQuiz/LevQuiz/Models/AppUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/LevQuiz/LevQuiz/Models/AppUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/LevQuiz/LevQuiz/Models/Notifications.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/LevQuiz/LevQuiz/Models/Notifications.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/LevQuiz/LevQuiz/Models/Quiz.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/LevQuiz/LevQuiz/Models/Quiz.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/LevQuiz/LevQuiz/Models/AppUser.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/LevQuiz/LevQuiz/Models/AppUser.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/LevQuiz/LevQuiz/Models/Notifications.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/LevQuiz/LevQuiz/Models/Notifications.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/LevQuiz/LevQuiz/Models/Quiz.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/LevQuiz/LevQuiz/Models/Quiz.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/LevQuiz/LevQuiz/Services/QuizService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/LevQuiz/LevQuiz/Services/QuizService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,6 +17,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
