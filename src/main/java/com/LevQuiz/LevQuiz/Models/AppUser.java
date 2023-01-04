@@ -21,7 +21,6 @@ public class AppUser {
     @Id
     @Column(updatable = false, nullable = false) // à revoir après
     private Long id;
-
     private String username;
 
     private String password;
