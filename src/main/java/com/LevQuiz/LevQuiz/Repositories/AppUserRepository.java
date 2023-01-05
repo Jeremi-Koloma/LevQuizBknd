@@ -2,6 +2,8 @@ package com.LevQuiz.LevQuiz.Repositories;
 
 import com.LevQuiz.LevQuiz.Models.AppUser;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
@@ -14,9 +16,10 @@ public interface AppUserRepository extends JpaRepository<AppUser, Long> {
     AppUser findByEmail(String email);
 
     //
-    AppUser findUserById(Long id);
+    @Query(value = "SELECT appuser FROM appuser appuser WHERE appuser.id=:x", nativeQuery = true)
+    AppUser findUserById(@Param("x") Long id);
 
     // Retourner une liste des utilisateurs pour un champs de recherche l'utilisateur
-    public List<AppUser> findByUsernameContaining(String username);
+    List<AppUser> findByUsernameContaining(String username);
 
 }

@@ -25,8 +25,6 @@ public interface QuizService {
     // Une méthode qui va retourné un Quiz pour le supprimer.
     Quiz deleteQuiz(Quiz quiz);
 
-    // une méthode qui va retourné un string pour de Titre du Quiz
-    String saveQuizTitre(HttpServletRequest request, String quizTitre);
 
 
 

@@ -6,6 +6,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.io.Serial;
+import java.io.Serializable;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
@@ -16,7 +18,11 @@ import java.util.Set;
 @AllArgsConstructor // constructeur avce tous les paramètres
 @Getter // Génération des getters
 @Setter // Génération des getters
-public class AppUser {
+public class AppUser implements Serializable {
+
+    @Serial
+    private static final long serialVersionUID = 14651065165L;
+
     @GeneratedValue(strategy = GenerationType.AUTO) // Identifier notre primary Key
     @Id
     @Column(updatable = false, nullable = false) // à revoir après

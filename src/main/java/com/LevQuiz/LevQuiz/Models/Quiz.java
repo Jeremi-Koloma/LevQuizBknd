@@ -6,6 +6,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.io.Serial;
+import java.io.Serializable;
 import java.util.Date;
 
 @Entity // Identifier cette classe comme une table dans la base de donnée
@@ -13,12 +15,16 @@ import java.util.Date;
 @AllArgsConstructor // Généré un constructeur avec tous les arguments
 @Getter // Génération des Getters
 @Setter // Génération des Setters
-public class Quiz {
+public class Quiz implements Serializable {
+    @Serial
+    private static final long serialVersionUID = 7863165L;
+
     @GeneratedValue (strategy = GenerationType.AUTO) // Notre primary Key
     @Id // Identifier notre id
     @Column(updatable = false, nullable = false) // à revoir après
     private Long id;
 
+    private String username;
     private String titre;
     private String description;
     private Date quizDate;

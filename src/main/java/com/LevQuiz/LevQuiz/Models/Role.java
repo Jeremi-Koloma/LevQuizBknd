@@ -6,6 +6,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.io.Serial;
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -14,7 +16,10 @@ import java.util.Set;
 @AllArgsConstructor // un constructeur avec tous les paramètres
 @Getter // Génération des getters
 @Setter // Génération des setters
-public class Role {
+public class Role implements Serializable {
+    @Serial
+    private static final long serialVersionUID = 4165165L;
+
     @GeneratedValue (strategy = GenerationType.AUTO) // Notre primary Key
     @Id // identifier notre id
     @Column(updatable = false, nullable = false) // à revoir après
