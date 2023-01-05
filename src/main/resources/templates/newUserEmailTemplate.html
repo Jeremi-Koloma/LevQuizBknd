@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Email-LevQuiz</title>
+</head>
+<body>
+
+   <h4>
+    Bienvenue <span th:text="${user.name}"></span>
+   </h4>
+        <p> Vos identifiants pour vous connecter</p>
+        <p> Username: <span th:text="${user.username}"></span></p>
+        <p> Password: <span th:text="${password}"></span></p>
+
+</body>
+</html>

@@ -19,6 +19,7 @@ public class Quiz {
     @Column(updatable = false, nullable = false) // à revoir après
     private Long id;
 
+    private String username;
     private String titre;
     private String description;
     private Date quizDate;
