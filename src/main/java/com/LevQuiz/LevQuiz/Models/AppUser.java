@@ -1,5 +1,6 @@
 package com.LevQuiz.LevQuiz.Models;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -27,8 +28,15 @@ public class AppUser implements Serializable {
     @Id
     @Column(updatable = false, nullable = false) // à revoir après
     private Long id;
+    private String firstname;
+    private String lastname;
+
+    // Ce champ est unqiue
+    @Column(unique = true)
     private String username;
 
+    // pour cachier le mots de passe s'afficher publiquements
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String password;
 
     // Ce champ est unqiue

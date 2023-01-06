@@ -3,11 +3,12 @@ package com.LevQuiz.LevQuiz.Services;
 import com.LevQuiz.LevQuiz.Models.AppUser;
 import com.LevQuiz.LevQuiz.Models.Role;
 
+import java.util.HashMap;
 import java.util.List;
 
 public interface AccountService {
     // Une methode qui va prendre l'utilisateur en parmètre pour l'Enregistrer
-    void saveUser(AppUser appUser);
+    AppUser saveUser(String firstname, String lastname, String username, String email);
 
     // Une méthode qui va retourner un utilisateur par son Nom pour authentification
     AppUser findByUsername(String username);
@@ -25,15 +26,18 @@ public interface AccountService {
     Role saveRole(Role role);
 
     // Une méthode pour mèttre l'utilisateur à jours
-    void updateUser(AppUser appUser);
+    void updateUser(AppUser appUser, HashMap<String, String> request);
 
     // Une méthode qui va retourné un utilisateur par son ID
-    AppUser findById(Long id);
+    AppUser findUserById(Long id);
 
     // Une méthode pour supprimer un utilisateur avec actuel utilisateur en paramètre
     void deleteUser(AppUser appUser);
 
     // Une méthode pour Changer le mots de passe d'un utilisateur avec actuel utilisateur en paramètre
+    void updateUserPassword(AppUser appUser, String newPassword);
+
+    // Une méthode pour le mots de passe oublié
     void resetPassword(AppUser appUser);
 
     // Une méthode qui va retourné la liste des utilisateur par leurs Non d'utilisateur pour type barre de Recherche

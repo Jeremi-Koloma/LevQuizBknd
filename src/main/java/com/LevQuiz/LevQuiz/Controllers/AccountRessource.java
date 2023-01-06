@@ -3,6 +3,7 @@ package com.LevQuiz.LevQuiz.Controllers;
 import com.LevQuiz.LevQuiz.Models.AppUser;
 import com.LevQuiz.LevQuiz.Services.AccountService;
 import lombok.AllArgsConstructor;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -66,21 +67,113 @@ public class AccountRessource {
     // Une méthode qui va Créer un utilisateur
     @PostMapping("register")
     public ResponseEntity<?> register(@RequestBody HashMap<String, String> request){ // RequestBody pour dire que les donnée se trouve dans le corps de la requete
+        String username = request.get("username");
+        // Vérifions si le non d'utilisateur existe déjç
+        if (accountService.findByUsername(username) != null){
+            // si username existe,
+            return new ResponseEntity<>("Nom d'utilisateur Existe déjà !",HttpStatus.CONFLICT);
+        }
         String email = request.get("email");
         // vérifier si email exist
         if (accountService.findByEmail(email) != null){
             // Si email exist
             return new ResponseEntity<>("Email Existe déjà !",HttpStatus.CONFLICT);
         }
-        String username = request.get("username");
+        String firstname = request.get("firstname");
+        String lastname = request.get("lastname");
         // Essayons d'enregister l'utilisateur
         try {
-            AppUser user = accountService.saveUser();
+            AppUser user = accountService.saveUser(firstname, lastname, username, email);
             return new ResponseEntity<>(user, HttpStatus.OK);
         }
         catch (Exception e){
             return new ResponseEntity<>("Une Erreur s'est produit lors d'enregistremet de user", HttpStatus.BAD_REQUEST);
         }
+    }
+
+    // Une méthode pour mèttre l'utilisateur à jours
+    @PostMapping("/update")
+    public ResponseEntity<?> updateProfile(@RequestBody HashMap<String, String> request){
+        // getter id user
+        String id = request.get("id");
+        // Cherchons l'utilisateur
+        AppUser user = accountService.findUserById(Long.parseLong(id));
+        // vérifier si l'utilisateur existe
+        if (user == null){
+            // Si l'utilisateur est null
+            return new ResponseEntity<>("Utilisateur non trouvé !", HttpStatus.NOT_FOUND);
+        }
+        // Sinon si existe, alors on l'enregistre
+        try {
+            accountService.updateUser(user, request);
+            return new ResponseEntity<>(user, HttpStatus.OK);
+        }catch (Exception e){
+            return new ResponseEntity<>("Une Erreur s'est produit lors de mise en jours", HttpStatus.BAD_REQUEST);
+        }
+    }
+
+
+    // une méthode pour changer le mots de passe
+    @PostMapping("/changePassword")
+    public ResponseEntity<String> changePassword(@RequestBody HashMap<String, String> request ){
+        // Recupérons le nom d'utilisateur dans la requête
+        String username = request.get("username");
+        // cherchons actuel utilisateur et passons le username récuperé
+        AppUser appUser = accountService.findByUsername(username);
+        // Vérifier si l'utisateur est null
+        if (appUser == null){
+            // Si l'utilisateur est null
+            return new ResponseEntity<>("Utilisateur non trouvé !", HttpStatus.BAD_REQUEST);
+        }
+        // Sinon si l'utilisateur existe
+        // Une variable pour récuperer actuel mots de passe de l'utilisateur
+        String currentPassword = request.get("currentPassword");
+        // une variable pour le nouveau mots de passe
+        String newPassword = request.get("newPassword ");
+        // une variable pour la confirmation du nouveau mots de passe
+        String confirmPassword = request.get("confirmPassword  ");
+        // Vérifions si newPassword et confirmPassword sont différents
+        if (!newPassword.equals(confirmPassword)){
+            // Si les mots de passes sont différents
+            return new ResponseEntity<>("Mots passe non conforme !", HttpStatus.BAD_REQUEST);
+        }
+        // Sinon si les mots de passes sont identiques
+        // Recupérons actuel mots de passe
+        String userPassword = appUser.getPassword();
+        // Essayons de changer le mots de passe
+        try {
+            // Vérifions si le nouveau mots de passe n'est pas null
+            if (!newPassword.isEmpty() && !StringUtils.isEmpty(newPassword)){
+                // Conparons les mots de passe si actuel mots de passe et celui de la base de donnée sont les mêmes
+                if (bCryptPasswordEncoder.matches(currentPassword, userPassword)){
+                    // Si c'est les même
+                     accountService.updateUserPassword(appUser, newPassword);
+                } else {
+                    return new ResponseEntity<>("Mots de passe actuel est incorrect !", HttpStatus.BAD_REQUEST);
+                }
+                return new ResponseEntity<>("Mots passe changé avec succès !", HttpStatus.OK);
+            }
+        }
+        catch (Exception e){
+            return new ResponseEntity<>("Une Erreur s'est produit en changeant de mots de passe !", HttpStatus.BAD_REQUEST);
+        }
+        return new ResponseEntity<>("Succes !", HttpStatus.OK);
+    }
+
+
+    // Une méthode pour le mots de passe oublié
+    @GetMapping("/resetPassword/{email}")
+    public ResponseEntity<String> resetPassword(@PathVariable("email") String email){
+        // vérifions si l'utilisateur exite dansl la base grace à son email
+        AppUser user = accountService.findByEmail(email);
+        // Vérifier si l'utisateur est null
+        if (user == null){
+            // Si l'utilisateur est null
+            return new ResponseEntity<>("Utilisateur non trouvé !", HttpStatus.BAD_REQUEST);
+        }
+        // sinon si l'utilisateur existe, il peut changé son mots de passe oublié
+        accountService.resetPassword(user);
+        return new ResponseEntity<>("Vérifié votre boîte mail !", HttpStatus.OK);
     }
 
 

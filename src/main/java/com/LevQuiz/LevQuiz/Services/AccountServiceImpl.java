@@ -12,6 +12,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 
 @Service // Pour dire qu'il sagit du service logique
@@ -37,18 +39,30 @@ public class AccountServiceImpl implements AccountService {
     private JavaMailSender mailSender;
 
     @Override // Enregister pour l'utilisateur
-    public void saveUser(AppUser appUser) {
+    public AppUser saveUser(String firstname, String lastname, String username, String email) {
         //Grace à Apache Commons lang3
         // créeons une variable de password pour générer un Random mots de passe à l'utilisateur
         String password = RandomStringUtils.randomAlphanumeric(10);
         // Encoder le mots de passe qui a été générer
         String encryptedPassword = bCryptPasswordEncoder.encode(password);
+        AppUser appUser = new AppUser();
+        // Lier ses champs à l'utilisateur
+        appUser.setFirstname(firstname);
+        appUser.setLastname(lastname);
+        appUser.setUsername(username);
+        appUser.setEmail(email);
         // affecter le mots de passe crypter comme password de l'utilisateur
         appUser.setPassword(encryptedPassword);
+        // Vérifier si la date est vide, on l'ajoute une date
+        if (appUser.getCreatedDate() == null){
+            appUser.setCreatedDate(new Date());
+        }
         // Maintenant Enregister l'utilisateur
         appUserRepository.save(appUser);
         // Mais Envoyé le Random password à l'utilisateur
         mailSender.send(emailConstructor.contructNewUserEmail(appUser,password));
+        // On retourne l'utilisateur
+        return appUser;
     }
 
     @Override // implementation la méthode qui va retourné l'utlisateur par son nom
@@ -77,7 +91,7 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
-    public void updateUser(AppUser appUser) {
+    public void updateUser(AppUser appUser, HashMap<String, String> request) {
         // Récupéré le mots de passe saisi par l'utilisateur
         String password = appUser.getPassword();
         // Encoder le mots de passe
@@ -89,13 +103,23 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override // implementation de la méthode qui va retouné un utilisateur par son ID
-    public AppUser findById(Long id) {
+    public AppUser findUserById(Long id) {
         return appUserRepository.findUserById(id);
     }
 
     @Override // implementation de la méthode qui supprime user
     public void deleteUser(AppUser appUser) {
         appUserRepository.delete(appUser);
+    }
+
+    @Override
+    public void updateUserPassword(AppUser appUser, String newPassword) {
+        // Cryper le nouveau mots de passe
+        String encryptedPassword = bCryptPasswordEncoder.encode(newPassword);
+        // attrubié ce mots de passe encodé comme mots de passe de l'utilisateur
+        appUser.setPassword(encryptedPassword);
+        // Mais Envoyé le Random password à l'utilisateur
+        appUserRepository.save(appUser);
     }
 
     @Override
