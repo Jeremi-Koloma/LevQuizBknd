@@ -24,6 +24,7 @@ public class QuizServiceImpl implements QuizService{
     public Quiz saveQuiz(AppUser appUser, HashMap<String, String> request, String titre) {
         Quiz quiz = new Quiz();
         quiz.setUsername(appUser.getUsername());
+        quiz.setTitre(titre);
         quiz.setQuizDate(new Date());
         quizRepository.save(quiz);
         return quiz;
