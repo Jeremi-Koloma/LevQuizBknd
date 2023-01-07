@@ -44,6 +44,6 @@ public interface AccountService {
     List<AppUser> getUserListByUsername(String username);
 
     // un simple savegarde des utilisateurs
-    void simpleSave(AppUser appUser);
+    AppUser simpleSave(AppUser appUser);
 
 }

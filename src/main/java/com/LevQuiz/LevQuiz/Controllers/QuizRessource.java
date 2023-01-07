@@ -23,15 +23,32 @@ public class QuizRessource {
 
     // Une méthode pour afficher la liste des Quiz
     @GetMapping("/list")
-    public List<Quiz> getQuizList(){ // On retourne la liste des Quiz
-        return quizService.quizList();
+    public ResponseEntity<?> getQuizList(){
+        // Récupérons la liste des Quiz
+        List<Quiz> quizList = quizService.quizList();
+        // Vérifions si la liste de quiz est vide
+        if (quizList.isEmpty()){
+            // si elle est vide
+            return  new ResponseEntity<>("Accun Quiz trouver !", HttpStatus.NOT_FOUND);
+        }
+        // sinon s'il ya une liste
+        return  new ResponseEntity<>(quizList, HttpStatus.OK);
+
     }
 
 
     // Une méthode pour afficher un seul Quiz
     @GetMapping("/getQuizById/{quizId}")
-    public Quiz getOneQuizById(@PathVariable("quizId") Long id){ // on retourne le quiz
-        return quizService.getQuizById(id);
+    public ResponseEntity<?> getOneQuizById(@PathVariable("quizId") Long id){
+        // Recupérons le le quiz
+        Quiz quiz = quizService.getQuizById(id);
+        // vérifions si le Quiz est nul, n'existe pas
+        if (quiz == null){
+            // si le Quiz n'existe pas
+            return  new ResponseEntity<>("Accun Quiz trouver !", HttpStatus.NOT_FOUND);
+        }
+        // sinon s'il existe
+        return  new ResponseEntity<>(quiz, HttpStatus.OK);
     }
 
 
@@ -102,9 +119,12 @@ public class QuizRessource {
             // Sinon si ça échoue
             return  new ResponseEntity<>("Une Erreur s'est produit lors de la supprimession de quiz !", HttpStatus.BAD_REQUEST);
         }
-
-
     }
+
+
+    // Une méthode pour Enregister les photos de profile
+
+
 
 
 

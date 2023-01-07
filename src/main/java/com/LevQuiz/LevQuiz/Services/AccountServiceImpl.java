@@ -142,7 +142,7 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override // implementation de la méthode qui va simplement enregistrer l'utilisateur
-    public void simpleSave(AppUser appUser) {
-        appUserRepository.save(appUser);
+    public AppUser simpleSave(AppUser appUser) {
+       return appUserRepository.save(appUser);
     }
 }

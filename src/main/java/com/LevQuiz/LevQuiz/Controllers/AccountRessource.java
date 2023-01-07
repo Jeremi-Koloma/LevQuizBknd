@@ -43,7 +43,7 @@ public class AccountRessource {
         AppUser user = accountService.findByUsername(username);
         // Vérifier si l'utilisateur n'existe pas
         if (user == null){
-            return new ResponseEntity<>("Utilisateur non trouver !",HttpStatus.OK);
+            return new ResponseEntity<>("Utilisateur non trouver !",HttpStatus.NOT_FOUND);
         }
         // Sinon si on trouve l'utilisateur, on le retourne
         return new ResponseEntity<>(user, HttpStatus.OK);
@@ -68,7 +68,7 @@ public class AccountRessource {
     @PostMapping("register")
     public ResponseEntity<?> register(@RequestBody HashMap<String, String> request){ // RequestBody pour dire que les donnée se trouve dans le corps de la requete
         String username = request.get("username");
-        // Vérifions si le non d'utilisateur existe déjç
+        // Vérifions si le non d'utilisateur existe déja
         if (accountService.findByUsername(username) != null){
             // si username existe,
             return new ResponseEntity<>("Nom d'utilisateur Existe déjà !",HttpStatus.CONFLICT);
@@ -87,9 +87,18 @@ public class AccountRessource {
             return new ResponseEntity<>(user, HttpStatus.OK);
         }
         catch (Exception e){
+            // si ça échoue
             return new ResponseEntity<>("Une Erreur s'est produit lors d'enregistremet de user", HttpStatus.BAD_REQUEST);
         }
     }
+
+
+    // Une méthode qui permet d'ajouter un User
+    @PostMapping("/simpleAddUser")
+    public AppUser simpleSaveUser(@RequestBody AppUser appUser){ // @RequestBody pour prendre les données de qui se trouve dans le Body
+        return accountService.simpleSave(appUser);
+    }
+
 
     // Une méthode pour mèttre l'utilisateur à jours
     @PostMapping("/update")
