@@ -2,8 +2,10 @@ package com.LevQuiz.LevQuiz.Services;
 
 import com.LevQuiz.LevQuiz.Models.AppUser;
 import com.LevQuiz.LevQuiz.Models.Role;
+import com.LevQuiz.LevQuiz.Models.UserRole;
 import com.LevQuiz.LevQuiz.Repositories.AppUserRepository;
 import com.LevQuiz.LevQuiz.Repositories.RoleRepository;
+import com.LevQuiz.LevQuiz.Utility.Constants;
 import com.LevQuiz.LevQuiz.Utility.EmailConstructor;
 import lombok.AllArgsConstructor;
 import org.apache.commons.lang3.RandomStringUtils;
@@ -12,9 +14,11 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.*;
 
 @Service // Pour dire qu'il sagit du service logique
 @Transactional
@@ -32,6 +36,7 @@ public class AccountServiceImpl implements AccountService {
     // Injectons RoleRepository pour enregistrer les Roles
     private RoleRepository roleRepository;
 
+
     // Injectons EmailContructor
     private EmailConstructor emailConstructor;
 
@@ -39,10 +44,10 @@ public class AccountServiceImpl implements AccountService {
     private JavaMailSender mailSender;
 
     @Override // Enregister pour l'utilisateur
-    public AppUser saveUser(String firstname, String lastname, String username, String email) {
+    public AppUser saveUser(String firstname, String lastname, String username, String email,String password) {
         //Grace à Apache Commons lang3
         // créeons une variable de password pour générer un Random mots de passe à l'utilisateur
-        String password = RandomStringUtils.randomAlphanumeric(10);
+      //  String password = RandomStringUtils.randomAlphanumeric(10);
         // Encoder le mots de passe qui a été générer
         String encryptedPassword = bCryptPasswordEncoder.encode(password);
         AppUser appUser = new AppUser();
@@ -57,8 +62,22 @@ public class AccountServiceImpl implements AccountService {
         if (appUser.getCreatedDate() == null){
             appUser.setCreatedDate(new Date());
         }
+
+        Set<UserRole> userRoles = new HashSet<>();
+        userRoles.add(new UserRole(appUser,roleRepository.findRoleByName("USER")));
+        appUser.setUserRoles(userRoles);
         // Maintenant Enregister l'utilisateur
         appUserRepository.save(appUser);
+        byte[] bytes;
+        //
+        try {
+            bytes = Files.readAllBytes(Constants.TEMP_USER.toPath());
+            String fileName = appUser.getId() + ".png";
+            Path path = Paths.get(Constants.USER_FOLDER + fileName);
+            Files.write(path, bytes);
+        }catch (IOException e){
+            e.printStackTrace();
+        }
         // Mais Envoyé le Random password à l'utilisateur
         mailSender.send(emailConstructor.contructNewUserEmail(appUser,password));
         // On retourne l'utilisateur

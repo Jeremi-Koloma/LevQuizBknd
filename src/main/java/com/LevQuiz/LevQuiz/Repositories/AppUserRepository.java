@@ -4,10 +4,12 @@ import com.LevQuiz.LevQuiz.Models.AppUser;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 // Cette classe va étendre de l'interface JpaRepository pour avoir accès à la base de donnée
+@Repository
 public interface AppUserRepository extends JpaRepository<AppUser, Long> {
     //
     AppUser findByUsername(String username);

@@ -32,4 +32,15 @@ public class UserRole implements Serializable {
     // FetchType.EAGER, en chargent UserRole, Affiche son Role aussi.
     @ManyToOne(fetch = FetchType.EAGER) // Plusieurs rôles d'utilisateur peuvent appartenir à un seul Role
     private  Role role; // Role
+
+
+    public UserRole(long userRoleId,AppUser appUser, Role role) {
+        this.userRoleId=userRoleId;
+        this.appUser=appUser;
+        this.role=role;
+    }
+    public UserRole(AppUser appUser, Role role) {
+        this.appUser=appUser;
+        this.role=role;
+    }
 }

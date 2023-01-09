@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -68,6 +69,8 @@ public class AccountRessource {
     @PostMapping("register")
     public ResponseEntity<?> register(@RequestBody HashMap<String, String> request){ // RequestBody pour dire que les donnée se trouve dans le corps de la requete
         String username = request.get("username");
+
+        //Date createdate = new Date(request.get("createdDate"));
         // Vérifions si le non d'utilisateur existe déja
         if (accountService.findByUsername(username) != null){
             // si username existe,
@@ -81,15 +84,16 @@ public class AccountRessource {
         }
         String firstname = request.get("firstname");
         String lastname = request.get("lastname");
+        String password = request.get("password");
         // Essayons d'enregister l'utilisateur
-        try {
-            AppUser user = accountService.saveUser(firstname, lastname, username, email);
+        //try {
+            AppUser user = accountService.saveUser(firstname, lastname, username, email,password);
             return new ResponseEntity<>(user, HttpStatus.OK);
-        }
-        catch (Exception e){
+        //}
+       // catch (Exception e){
             // si ça échoue
-            return new ResponseEntity<>("Une Erreur s'est produit lors d'enregistremet de user", HttpStatus.BAD_REQUEST);
-        }
+     //       return new ResponseEntity<>("Une Erreur s'est produit lors d'enregistremet de user", HttpStatus.BAD_REQUEST);
+      //  }
     }
 
 
