@@ -6,6 +6,6 @@ public class SecurityConstants {
     public static final long EXPIRATION_TIME = 10*60*1000;
     public static final String TOKEN_PREFIX = "Bearer ";
     public static final String HEADER_TYPE = "Authorization";
-    public static final String CLIENT_DOMAIN_URL = "http://localhost:4200/*";
+    public static final String CLIENT_DOMAIN_URL = "*";
 
 }

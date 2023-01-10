@@ -1,9 +1,11 @@
 package com.LevQuiz.LevQuiz.SpringConfig;
 
 import lombok.AllArgsConstructor;
+
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
@@ -40,10 +42,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         JwtAuthentication jwtAuthentication = new JwtAuthentication(authenticationManager());
-        jwtAuthentication.setFilterProcessesUrl("/user/login");
+        jwtAuthentication.setFilterProcessesUrl(PUBLIC_MATCHERS[0]);
         //Désactiver le token csrf générer Spring sécurity pour qu'il laisse passer les requêtes
-        http.csrf().disable()
-                .cors().disable()
+        http.csrf().disable().cors().disable()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                 .authorizeRequests().antMatchers(PUBLIC_MATCHERS).permitAll()

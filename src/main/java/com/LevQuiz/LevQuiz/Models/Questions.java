@@ -18,7 +18,7 @@ public class Questions implements Serializable {
     @Serial
     private static final long serialVersionUID = 2491065L;
 
-    @GeneratedValue (strategy = GenerationType.AUTO) // Identifier notre primary Key
+    @GeneratedValue (strategy = GenerationType.IDENTITY) // Identifier notre primary Key
     @Id // Identifier notre id
     @Column(updatable = false, nullable = false) // à revoir après
     private Long id;

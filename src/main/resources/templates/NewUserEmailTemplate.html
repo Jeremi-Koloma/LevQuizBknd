@@ -54,6 +54,20 @@
 		font-size: 18px !important;
 	}
 }
+.welcomeTitle{
+    color:white;
+    background:#274F8A;
+    border-radius: 7px;
+    display:flex;
+    justify-content:center;
+}
+.welcomP{
+    text-align: center;
+}
+.usernameColor{
+    color:#274F8A;
+}
+
 </style>
 
 </head>
@@ -81,9 +95,8 @@
                             <tr>
                                 <td class="head-title"
                                     style="border-collapse: collapse; border: 0; margin: 0; padding: 0; -webkit-text-size-adjust: none; color: #555559; font-family: Arial, sans-serif; font-size: 28px; line-height: 34px; font-weight: bold; text-align: center;">
-                                    <div class="mktEditable" id="main_title">
-                                        Bienvenue sur LevQuiz !
-                                        <hr size="1" color="#eeeff0">
+                                    <div class="mktEditable welcomeTitle" id="main_title">
+                                       <p class="welcomP"> Bienvenue sur LevQuiz !</p>
                                     </div>
                                 </td>
                             </tr>
@@ -92,7 +105,7 @@
                                 <td class="text"
                                     style="border-collapse: collapse; border: 0; margin: 0; padding: 0; -webkit-text-size-adjust: none; color: #555559; font-family: Arial, sans-serif; font-size: 16px; line-height: 26px;">
                                     <h4>
-                                        Bonjour <span th:text="${user.firstname }"></span>,
+                                        Bonjour <span class="usernameColor" th:text="${user.firstname }"></span>,
                                     </h4>
                                     <div class="mktEditable" id="main_text">
                                         <p>
@@ -100,21 +113,23 @@
                                         </p>
 
                                         <p>
-                                            Veuillez voir ci-dessous pour récupérer vos identifients pour accéder à votre compte.
+                                            LevQuiz est une application permettant de faciliter le suivi de compétences
+                                            des apprenants par les formateurs en rendant les tests à la fois instructifs,
+                                            amusants et agréables.
                                         </p>
-
-                                        <p>Voici les informations sur votre compte :</p>
-                                        <p>Username: <span th:text="${user.username}"></span></p>
-                                        <p>Password: <span th:text="${password}"></span></p>
+                                        <!--
+                                             <p>Voici les informations sur votre compte :</p>
+                                             <p>Username: <span th:text="${user.username}"></span></p>
+                                             <p>Password: <span th:text="${password}"></span></p>
+                                        -->
 
                                         <p>
-                                            Si vous n'avez pas envoyé cette demande, veuillez nous contacter immédiatement.
+                                            En cas de besoin, veuillez nous contacter immédiatement.
                                         </p>
 
                                         <p>Sincèrement,</p>
                                         <p>Jeremi KOLOMA</p>
                                         <p>LevQuiz</p>
-                                        </p>
                                     </div>
                                 </td>
                             </tr>

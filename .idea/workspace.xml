@@ -5,14 +5,41 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1a2214e6-822e-4e6c-9522-5510a335b930" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dbnavigator.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dbnavigator.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/LevQuiz/LevQuiz/LevQuizAppApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/LevQuiz/LevQuiz/LevQuizAppApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/LevQuiz/LevQuiz/Models/AppUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/LevQuiz/LevQuiz/Models/AppUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/LevQuiz/LevQuiz/Models/Notifications.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/LevQuiz/LevQuiz/Models/Notifications.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/LevQuiz/LevQuiz/Models/Questions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/LevQuiz/LevQuiz/Models/Questions.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/LevQuiz/LevQuiz/Models/Quiz.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/LevQuiz/LevQuiz/Models/Quiz.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/LevQuiz/LevQuiz/Models/Reponses.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/LevQuiz/LevQuiz/Models/Reponses.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/LevQuiz/LevQuiz/Models/Role.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/LevQuiz/LevQuiz/Models/Role.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/LevQuiz/LevQuiz/Models/UserRole.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/LevQuiz/LevQuiz/Models/UserRole.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/LevQuiz/LevQuiz/Repositories/AppUserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/LevQuiz/LevQuiz/Repositories/AppUserRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/LevQuiz/LevQuiz/Repositories/NotificationsRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/LevQuiz/LevQuiz/Repositories/NotificationsRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/LevQuiz/LevQuiz/Repositories/QuestionsRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/LevQuiz/LevQuiz/Repositories/QuestionsRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/LevQuiz/LevQuiz/Repositories/ReponsesRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/LevQuiz/LevQuiz/Repositories/ReponsesRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/LevQuiz/LevQuiz/Repositories/RoleRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/LevQuiz/LevQuiz/Repositories/RoleRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/LevQuiz/LevQuiz/Services/AccountService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/LevQuiz/LevQuiz/Services/AccountService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/LevQuiz/LevQuiz/Services/AccountServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/LevQuiz/LevQuiz/Services/AccountServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/LevQuiz/LevQuiz/Services/UserDetailsServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/LevQuiz/LevQuiz/Services/UserDetailsServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/LevQuiz/LevQuiz/SpringConfig/JwtAuthentication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/LevQuiz/LevQuiz/SpringConfig/JwtAuthentication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/LevQuiz/LevQuiz/SpringConfig/JwtAuthorization.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/LevQuiz/LevQuiz/SpringConfig/JwtAuthorization.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/LevQuiz/LevQuiz/SpringConfig/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/LevQuiz/LevQuiz/SpringConfig/SecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/LevQuiz/LevQuiz/SpringConfig/SecurityConstants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/LevQuiz/LevQuiz/SpringConfig/SecurityConstants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/NewUserEmailTemplate.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/NewUserEmailTemplate.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/LevQuiz/LevQuiz/LevQuizAppApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/LevQuiz/LevQuiz/LevQuizAppApplication.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/LevQuiz/LevQuiz/Models/AppUser.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/LevQuiz/LevQuiz/Models/AppUser.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/LevQuiz/LevQuiz/Models/Notifications.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/LevQuiz/LevQuiz/Models/Notifications.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/LevQuiz/LevQuiz/Models/Questions.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/LevQuiz/LevQuiz/Models/Questions.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/LevQuiz/LevQuiz/Models/Quiz.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/LevQuiz/LevQuiz/Models/Quiz.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/LevQuiz/LevQuiz/Models/Reponses.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/LevQuiz/LevQuiz/Models/Reponses.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/LevQuiz/LevQuiz/Models/Role.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/LevQuiz/LevQuiz/Models/Role.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/LevQuiz/LevQuiz/Models/UserRole.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/LevQuiz/LevQuiz/Models/UserRole.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/LevQuiz/LevQuiz/Services/AccountService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/LevQuiz/LevQuiz/Services/AccountService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/LevQuiz/LevQuiz/Services/AccountServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/LevQuiz/LevQuiz/Services/AccountServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/LevQuiz/LevQuiz/Services/UserDetailsServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/LevQuiz/LevQuiz/Services/UserDetailsServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/LevQuiz/LevQuiz/SpringConfig/JwtAuthentication.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/LevQuiz/LevQuiz/SpringConfig/JwtAuthentication.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/LevQuiz/LevQuiz/SpringConfig/JwtAuthorization.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/LevQuiz/LevQuiz/SpringConfig/JwtAuthorization.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/LevQuiz/LevQuiz/SpringConfig/SecurityConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/LevQuiz/LevQuiz/SpringConfig/SecurityConfig.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/NewUserEmailTemplate.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/NewUserEmailTemplate.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,7 +97,7 @@
   <component name="RunManager">
     <configuration name="LevQuizAppApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.LevQuiz.LevQuiz.LevQuizAppApplication" />
-      <module name="LevQuiz" />
+      <module name="LevQuizBknd" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.LevQuiz.LevQuiz.*" />

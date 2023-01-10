@@ -50,6 +50,7 @@ public class AccountServiceImpl implements AccountService {
         AppUser appUser = new AppUser();
         // Lier ses champs à l'utilisateur
         appUser.setFirstname(firstname);
+        appUser.setLastname(lastname);
         appUser.setUsername(username);
         appUser.setEmail(email);
         // affecter le mots de passe crypter comme password de l'utilisateur
@@ -98,6 +99,24 @@ public class AccountServiceImpl implements AccountService {
     @Override // implementation de la méthode qui va retourné un Role par son nom
     public Role findUserRoleByName(String name) {
         return roleRepository.findRoleByName(name);
+    }
+
+    @Override  // Ajouter un Rôle à un utilisateur
+    public void addNewRole(Role role) {
+        roleRepository.save(role);
+    }
+
+    @Override
+    public void addRoleToUser(String userName, String name) {
+        // Pour l'affecter un rôle à un USER, on le récupère d'abord dans la base de donne;
+        AppUser appUser = appUserRepository.findByUsername(userName);
+        // On récupère aussi les roles dans la base de donnée
+        Role role = roleRepository.findRoleByName(name);
+        Set<UserRole> userRoles = new HashSet<>();
+        userRoles.add(new UserRole(appUser,role));
+        // Maintenant on l'affecte un role
+        appUser.setUserRoles(userRoles);
+        appUserRepository.save(appUser);
     }
 
     @Override // implementation de la méthode qui enregistre le Role

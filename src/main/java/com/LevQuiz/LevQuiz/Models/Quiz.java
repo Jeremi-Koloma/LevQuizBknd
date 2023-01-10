@@ -19,7 +19,7 @@ public class Quiz implements Serializable {
     @Serial
     private static final long serialVersionUID = 7863165L;
 
-    @GeneratedValue (strategy = GenerationType.AUTO) // Notre primary Key
+    @GeneratedValue (strategy = GenerationType.IDENTITY) // Notre primary Key
     @Id // Identifier notre id
     @Column(updatable = false, nullable = false) // à revoir après
     private Long id;

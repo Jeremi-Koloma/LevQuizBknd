@@ -18,7 +18,7 @@ public class Reponses implements Serializable {
     @Serial
     private static final long serialVersionUID = 5115165L;
 
-    @GeneratedValue (strategy = GenerationType.AUTO) // notre primary Key
+    @GeneratedValue (strategy = GenerationType.IDENTITY) // notre primary Key
     @Id
     @Column(updatable = false, nullable = false) // à revoir après
     private Long id;

@@ -19,7 +19,7 @@ public class Notifications implements Serializable {
     @Serial
     private static final long serialVersionUID = -1465165L;
 
-    @GeneratedValue (strategy = GenerationType.AUTO) // Notre primary Key
+    @GeneratedValue (strategy = GenerationType.IDENTITY) // Notre primary Key
     @Id // notre id;
     @Column(updatable = false, nullable = false) // à revoir après
     private Long id;

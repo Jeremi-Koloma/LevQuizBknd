@@ -1,6 +1,7 @@
 package com.LevQuiz.LevQuiz.Services;
 
 import com.LevQuiz.LevQuiz.Models.AppUser;
+
 import com.LevQuiz.LevQuiz.Models.UserRole;
 import lombok.AllArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
@@ -9,13 +10,17 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Set;
 
 // Cette classe va implementé de l'interface UserDetailsService de Spring
 @AllArgsConstructor // pour l'injection des dépendances
+@Transactional
+@Service
 public class UserDetailsServiceImpl implements UserDetailsService {
     // Cette interface possède une seule méthode à implémenter
     // C'est cette méthode qui est appélé à chaque fois que l'utilisateur essaye de s'authentifier avec son Username et password
@@ -38,7 +43,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         // Cherchons tous les roles que l'utilisateur possède
         Set<UserRole> userRoles = appUser.getUserRoles();
         // Spring Security ne connaît pas userRole, mais il connaît authorities // donc ajoutons userRole à authorities
-        ((Set) userRoles).forEach(userRole->{
+         userRoles.forEach(userRole -> {
             authorities.add(new SimpleGrantedAuthority(userRoles.toString())); // on convertie les roles en string
         });
         // on retourne l'utilisateur avec tous les roles

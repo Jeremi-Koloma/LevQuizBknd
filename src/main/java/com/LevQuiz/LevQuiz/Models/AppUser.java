@@ -24,7 +24,7 @@ public class AppUser implements Serializable {
     @Serial
     private static final long serialVersionUID = 14651065165L;
 
-    @GeneratedValue(strategy = GenerationType.AUTO) // Identifier notre primary Key
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // Identifier notre primary Key
     @Id
     @Column(updatable = false, nullable = false) // à revoir après
     private Long id;

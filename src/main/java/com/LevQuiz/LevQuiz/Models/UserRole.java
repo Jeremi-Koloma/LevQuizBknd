@@ -19,18 +19,19 @@ public class UserRole implements Serializable {
     @Serial
     private static final long serialVersionUID = 8551651L;
 
-    @GeneratedValue (strategy = GenerationType.AUTO) // Notre primary Key
+    @GeneratedValue (strategy = GenerationType.IDENTITY) // Notre primary Key
     @Id // identifier notre id;
     @Column(updatable = false, nullable = false) // à revoir après
     private Long userRoleId;
 
-    @ManyToOne() // Plusieurs rôles d'utilisateur peuvent appartenir à un seul utilisateur
+    @ManyToOne(fetch = FetchType.EAGER) // Plusieurs rôles d'utilisateur peuvent appartenir à un seul utilisateur
     @JoinColumn(name = "user_id")
     @JsonIgnore
     private AppUser appUser; // L'utilisateur
 
     // FetchType.EAGER, en chargent UserRole, Affiche son Role aussi.
     @ManyToOne(fetch = FetchType.EAGER) // Plusieurs rôles d'utilisateur peuvent appartenir à un seul Role
+    @JoinColumn(name = "role_id")
     private  Role role; // Role
 
 

@@ -3,6 +3,7 @@ package com.LevQuiz.LevQuiz.SpringConfig;
 import com.LevQuiz.LevQuiz.Models.AppUser;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
+import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -26,7 +27,7 @@ public class JwtAuthentication extends UsernamePasswordAuthenticationFilter {
     // Cette classe à deux méthodes à utiliser
 
     // Ces deux filtres ont besoin de AuthenticationManager pour fonctionner
-    private final AuthenticationManager authenticationManager;
+    private AuthenticationManager authenticationManager;
 
     //
     public JwtAuthentication(AuthenticationManager authenticationManager){
@@ -38,16 +39,19 @@ public class JwtAuthentication extends UsernamePasswordAuthenticationFilter {
     // La prémière méthode quand l'utilisateur essaye de s'authentifier, c'est cette méthode qui est appelé par Spring Security
     @Override
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException {
-        // Cherchons l'utilisateur
-        AppUser appUser = null;
-        // L'utilisateur viendra de type JSON Token, Essayons de le convertir en AppUser de Java
+        System.out.println("------- Essaie d'Authentification -----");
+        ObjectMapper objectMapper = new ObjectMapper();
+        objectMapper.configure(JsonParser.Feature.AUTO_CLOSE_SOURCE, true);
+        AppUser appUser;
         try {
-            appUser = new ObjectMapper().readValue(request.getInputStream(), AppUser.class);
-        }catch (Exception e){
+            appUser = objectMapper.readValue(request.getInputStream(), AppUser.class);
+        } catch (Exception e) {
             e.printStackTrace();
-            throw new RuntimeException("Echeck de conversion de l'utilisateur de JSON en un object JAVA ! ");
+            throw new RuntimeException("Unable to convert Json into Java Object: " + e);
         }
-        return authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(appUser.getUsername(), appUser.getPassword()));
+        return authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
+                appUser.getUsername(),
+                appUser.getPassword()));
     }
 
 
@@ -56,6 +60,7 @@ public class JwtAuthentication extends UsernamePasswordAuthenticationFilter {
     protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response, FilterChain chain, Authentication authentication) throws IOException, ServletException {
         // Recuperons l'utilisateur qui s'est connecter
         // User de Spring
+        System.out.println("------- Connexion Reussi -----");
         User user = (User) authentication.getPrincipal();
         // Créons une liste de roles que utilisateur possède
         List<String> roles = new ArrayList<>();
@@ -65,9 +70,9 @@ public class JwtAuthentication extends UsernamePasswordAuthenticationFilter {
 
         // Création du Token
         String jwtToken = JWT.create()
-                .withIssuer(request.getRequestURI()) // Le nom de l'application qui a généré le token
+                .withIssuer("lzvQuiz.com") // Le nom de l'application qui a généré le token
                 .withSubject(user.getUsername()) // le nom d'utilisateur de la personne
-                .withArrayClaim("roles",roles.toArray(new String[roles.size()])) // liste des roles de l'utilisateur
+                .withArrayClaim("roles",roles.stream().toArray(String[]::new)) // liste des roles de l'utilisateur
                 .withExpiresAt(new Date(System.currentTimeMillis() + SecurityConstants.EXPIRATION_TIME)) // date d'expiration
                 .sign(Algorithm.HMAC256(SecurityConstants.SECRET)); // L'Algorithme de Cryptage
         response.addHeader(SecurityConstants.HEADER_TYPE, SecurityConstants.TOKEN_PREFIX + jwtToken);

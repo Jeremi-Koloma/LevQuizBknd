@@ -18,12 +18,15 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import static org.springframework.web.bind.annotation.RequestMethod.PUT;
+
 // Cette classe va étendre de OncePerRequestFilter
 public class JwtAuthorization extends OncePerRequestFilter {
     // cette classe possède une méthode, cette méthode s'exécute à chaque requête qui arrive avec le token
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
         // Permèttrer les routes ou les Domaine pour la bonne comminication avec le Frontend
+
         response.addHeader("Access-Control-Allow-Origin", SecurityConstants.CLIENT_DOMAIN_URL);
         response.addHeader("Access-Control-Allow-Headers", "Origin, Accept, X-Requested-With, "
                 + "Content-Type, Access-Control-Request-Method, " + "Access-Control-Request-Headers, Authorization");
@@ -31,7 +34,7 @@ public class JwtAuthorization extends OncePerRequestFilter {
         response.addHeader("Access-Control-Expose-Headers",
                 "Access-Control-Allow-Origin, " + "Access-Control-Allow-Credentials, " + "Authorization");
 
-        response.addHeader("Access-Control-Allow-Methods", "GET," + "POST, " + "DELETE, " + "POST");
+        response.addHeader("Access-Control-Allow-Methods", "GET," + "POST, " + "DELETE,"+ "PUT");
 
         //Vérifier si
         if (request.getMethod().equalsIgnoreCase("OPTIONS")){
