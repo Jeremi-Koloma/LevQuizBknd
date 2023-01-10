@@ -44,16 +44,12 @@ public class AccountServiceImpl implements AccountService {
     private JavaMailSender mailSender;
 
     @Override // Enregister pour l'utilisateur
-    public AppUser saveUser(String firstname, String lastname, String username, String email,String password) {
-        //Grace à Apache Commons lang3
-        // créeons une variable de password pour générer un Random mots de passe à l'utilisateur
-      //  String password = RandomStringUtils.randomAlphanumeric(10);
-        // Encoder le mots de passe qui a été générer
+    public AppUser saveUser(String firstname,String lastname, String username,String password, String email) {
+        // Encoder le mots de passe
         String encryptedPassword = bCryptPasswordEncoder.encode(password);
         AppUser appUser = new AppUser();
         // Lier ses champs à l'utilisateur
         appUser.setFirstname(firstname);
-        appUser.setLastname(lastname);
         appUser.setUsername(username);
         appUser.setEmail(email);
         // affecter le mots de passe crypter comme password de l'utilisateur

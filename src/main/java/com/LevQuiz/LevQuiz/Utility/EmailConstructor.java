@@ -31,18 +31,18 @@ public class EmailConstructor {
         String text= templateEngine.process("NewUserEmailTemplate", context); // on passe le template html et le context à cette varriable text
 
         // Génération du message
-        return new MimeMessagePreparator() {
+        MimeMessagePreparator messagePreparator = new MimeMessagePreparator() {
             @Override
             public void prepare(MimeMessage mimeMessage) throws Exception {
-                // Définissons des configurations pour envoyé email
                 MimeMessageHelper email = new MimeMessageHelper(mimeMessage);
                 email.setPriority(1);
-                email.setTo(user.getEmail()); // envoyé à l'Email de l'utisateur
-                email.setSubject("Bienvenue sur LevQuiz !"); // Sujet de mail
-                email.setText(text, true); // Actuel text notre html
-                email.setFrom(new InternetAddress(Objects.requireNonNull(environment.getProperty("support.email")))); // Source d'envoie du Mail
+                email.setTo(user.getEmail());
+                email.setSubject("Bienvenu sur levQuiz");
+                email.setText(text, true);
+                email.setFrom(new InternetAddress(environment.getProperty("support.email")));
             }
         };
+        return messagePreparator;
     }
 
 
@@ -55,17 +55,18 @@ public class EmailConstructor {
         String text= templateEngine.process("ResetPasswordUserEmailTemplate", context); // on passe le template html et le context à cette varriable text
 
         // Génération du message
-        return new MimeMessagePreparator() {
+        // Génération du message
+        MimeMessagePreparator messagePreparator = new MimeMessagePreparator() {
             @Override
             public void prepare(MimeMessage mimeMessage) throws Exception {
-                // Définissons des configurations pour envoyé email
                 MimeMessageHelper email = new MimeMessageHelper(mimeMessage);
                 email.setPriority(1);
-                email.setTo(user.getEmail()); // envoyé à l'Email de l'utisateur
-                email.setSubject("Reset password LevQuiz !"); // Sujet de mail
-                email.setText(text, true); // Actuel text notre html
-                email.setFrom(new InternetAddress(Objects.requireNonNull(environment.getProperty("support.email")))); // Source d'envoie du Mail
+                email.setTo(user.getEmail());
+                email.setSubject("Bienvenu sur levQuiz");
+                email.setText(text, true);
+                email.setFrom(new InternetAddress(environment.getProperty("support.email")));
             }
         };
+        return messagePreparator;
     }
 }

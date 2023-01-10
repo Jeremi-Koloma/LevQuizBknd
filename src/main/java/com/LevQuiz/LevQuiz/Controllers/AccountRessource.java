@@ -14,7 +14,7 @@ import java.util.HashMap;
 import java.util.List;
 
 @RestController // Pour dire qu'il s'agit qu'il classe controller
-@RequestMapping("/user") // le path ou lien dans l'url
+@RequestMapping(value = "/user") // le path ou lien dans l'url
 @AllArgsConstructor // Pour l'injections des dépendances
 public class AccountRessource {
 
@@ -68,26 +68,26 @@ public class AccountRessource {
     // Une méthode qui va Créer un utilisateur
     @PostMapping("register")
     public ResponseEntity<?> register(@RequestBody HashMap<String, String> request){ // RequestBody pour dire que les donnée se trouve dans le corps de la requete
+        String firstname = request.get("firstname");
+        String lastname = request.get("lastname");
         String username = request.get("username");
+        String password = request.get("password");
+        String email = request.get("email");
 
-        //Date createdate = new Date(request.get("createdDate"));
         // Vérifions si le non d'utilisateur existe déja
         if (accountService.findByUsername(username) != null){
             // si username existe,
             return new ResponseEntity<>("Nom d'utilisateur Existe déjà !",HttpStatus.CONFLICT);
         }
-        String email = request.get("email");
+
         // vérifier si email exist
         if (accountService.findByEmail(email) != null){
             // Si email exist
             return new ResponseEntity<>("Email Existe déjà !",HttpStatus.CONFLICT);
         }
-        String firstname = request.get("firstname");
-        String lastname = request.get("lastname");
-        String password = request.get("password");
         // Essayons d'enregister l'utilisateur
         //try {
-            AppUser user = accountService.saveUser(firstname, lastname, username, email,password);
+            AppUser user = accountService.saveUser(firstname,lastname,username,password,email);
             return new ResponseEntity<>(user, HttpStatus.OK);
         //}
        // catch (Exception e){

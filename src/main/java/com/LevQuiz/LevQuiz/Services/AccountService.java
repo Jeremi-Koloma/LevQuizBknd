@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface AccountService {
     // Une methode qui va prendre l'utilisateur en parmètre pour l'Enregistrer
-    AppUser saveUser(String firstname, String lastname, String username, String email,String password);
+    AppUser saveUser(String firstname,String lastname, String username, String password, String email);
 
     // Une méthode qui va retourner un utilisateur par son Nom pour authentification
     AppUser findByUsername(String username);
