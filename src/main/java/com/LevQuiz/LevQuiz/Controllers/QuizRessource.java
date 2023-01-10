@@ -82,6 +82,7 @@ public class QuizRessource {
         // Recupérer son nom d'utilisateur s'il exite
         String username = request.get("username");
         AppUser user = accountService.findByUsername(username);
+
         // Vérifier si l'utilisateur existe
         if (user == null){
             // Si l'utlisateur est null, n'existe pas
@@ -89,7 +90,7 @@ public class QuizRessource {
         }
         // Sinon si l'utilisateur existe alors il en ajouter un autre
         try {
-            Quiz quiz = quizService.saveQuiz(user, request, username);
+            Quiz quiz = quizService.saveQuiz(user, request);
             // on l'enregistre
             return  new ResponseEntity<>(quiz, HttpStatus.CREATED);
         }catch (Exception e){

@@ -29,8 +29,11 @@ public class Quiz implements Serializable {
     private String description;
     private Date quizDate;
 
+
+    // ****************************    Plus la peine pour la liaison car seule Username peut Gérér    ************************
+
     // FetchType.EAGER, en chargent le Quiz, affiche l'utilisateur aussi
-    @ManyToOne(fetch = FetchType.EAGER) // Plusieurs Quiz peuvent être créer par un seul utilisateur (*..1)
-    private AppUser appUser;
+    //@ManyToOne(fetch = FetchType.EAGER) // Plusieurs Quiz peuvent être créer par un seul utilisateur (*..1)
+    //private AppUser appUser;
 
 }

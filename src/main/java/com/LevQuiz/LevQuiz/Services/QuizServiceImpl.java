@@ -21,11 +21,15 @@ public class QuizServiceImpl implements QuizService{
     private QuizRepository quizRepository;
 
     @Override
-    public Quiz saveQuiz(AppUser appUser, HashMap<String, String> request, String titre) {
+    public Quiz saveQuiz(AppUser appUser, HashMap<String, String> request) {
         Quiz quiz = new Quiz();
+        String description = request.get("description");
+        String titre = request.get("titre");
         quiz.setUsername(appUser.getUsername());
+        quiz.setDescription(description);
         quiz.setTitre(titre);
         quiz.setQuizDate(new Date());
+        //quiz.setAppUser(appUser); // plus la peine
         quizRepository.save(quiz);
         return quiz;
     }
