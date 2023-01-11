@@ -106,7 +106,7 @@ public class AccountServiceImpl implements AccountService {
         roleRepository.save(role);
     }
 
-    @Override
+    @Override // implementation de la méthode qui va Affecter des Roles à un utilisateur
     public void addRoleToUser(String userName, String name) {
         // Pour l'affecter un rôle à un USER, on le récupère d'abord dans la base de donne;
         AppUser appUser = appUserRepository.findByUsername(userName);
@@ -124,7 +124,7 @@ public class AccountServiceImpl implements AccountService {
         return roleRepository.save(role);
     }
 
-    @Override
+    @Override // implementation de la méthode qui va permettre de Modifier un utilisateur
     public void updateUser(AppUser appUser, HashMap<String, String> request) {
         // Récupéré le mots de passe saisi par l'utilisateur
         String password = appUser.getPassword();

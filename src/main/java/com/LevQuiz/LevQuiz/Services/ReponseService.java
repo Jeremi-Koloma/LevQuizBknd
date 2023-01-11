@@ -1,6 +1,5 @@
 package com.LevQuiz.LevQuiz.Services;
 
-import com.LevQuiz.LevQuiz.Models.Questions;
 import com.LevQuiz.LevQuiz.Models.Reponses;
 
 import java.util.List;
@@ -15,7 +14,7 @@ public interface ReponseService {
     List<Reponses> listReponse();
 
     // Une méthode pour Afficher une seule Reponse
-    Reponses findByReponse(Long id);
+    Reponses findReponseById(Long id);
 
     // Une méthode pour Modifier une Reponse
     Reponses updateReponse(Long id, Reponses reponses);

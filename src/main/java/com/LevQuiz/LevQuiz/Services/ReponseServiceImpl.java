@@ -32,23 +32,29 @@ public class ReponseServiceImpl implements ReponseService{
         return reponsesRepository.save(reponses);
     }
 
-    @Override
+    @Override // implementation de la méthode qui va lister les reponses
     public List<Reponses> listReponse() {
-        return null;
+        return reponsesRepository.findAll();
     }
 
-    @Override
-    public Reponses findByReponse(Long id) {
-        return null;
+    @Override // implementation de la méthode qui va afficher une seule reponse
+    public Reponses findReponseById(Long id) {
+        return reponsesRepository.findById(id).get();
     }
 
-    @Override
+    @Override // implementation de la méthode pour modifier une reponse
     public Reponses updateReponse(Long id, Reponses reponses) {
-        return null;
+        return reponsesRepository.findById(id) // Si on trouve l'ID on fait du mappage
+                .map(repons->{
+                    repons.setReponse(reponses.getReponse());
+                    // Maintenant après avoir modifier on l'enregistre
+                    return reponsesRepository.save(repons);
+                }).orElseThrow(()->new RuntimeException("Reponse non Trouvé"));
     }
 
-    @Override
+    @Override // implementation de la méthode qui va supprimer une reponse
     public String deleteReponse(Long id) {
-        return null;
+        reponsesRepository.deleteById(id);
+        return "Reponse supprimer !";
     }
 }

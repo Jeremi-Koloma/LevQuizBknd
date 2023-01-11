@@ -34,22 +34,22 @@ public class QuizServiceImpl implements QuizService{
         return quiz;
     }
 
-    @Override // méthode pour Afficher tous Quiz
+    @Override // implementation de la méthode pour Afficher tous les Quiz
     public List<Quiz> quizList() {
         return quizRepository.findAll();
     }
 
-    @Override
+    @Override // implementation de la méthode qui va afficher un seul Quiz
     public Quiz getQuizById(Long id) {
         return quizRepository.findQuizById(id);
     }
 
-    @Override
+    @Override // implementation de la méthode qui va Afficher tous les Quiz créer par un l'utilisateur
     public List<Quiz> findQuizByUsername(String username) {
         return quizRepository.findByUsername(username);
     }
 
-    @Override
+    @Override // implementation de la méthode qui va supprimer un Quiz
     public Quiz deleteQuiz(Quiz quiz) {
         quizRepository.findQuizById(quiz.getId());
         return quiz;

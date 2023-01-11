@@ -10,7 +10,6 @@ import java.util.List;
 public interface QuizService {
     // Une méthode pour Enregister le Quiz les paramètre :
     // AppUser : Pour connaître l'utilisateur qui a créer le Quiz
-    // titre : Le Titre du quiz
     Quiz saveQuiz(AppUser appUser, HashMap<String, String> request);
 
     // Une méthode qui va retourné une liste de Quiz

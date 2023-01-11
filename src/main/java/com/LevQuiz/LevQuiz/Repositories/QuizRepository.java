@@ -17,7 +17,7 @@ public interface QuizRepository extends JpaRepository<Quiz, Long> {
     List<Quiz> findAll();
 
     // Une méthode qui va retourné une liste de Quiz créer par d'un utilisateur par ordre recent
-    @Query(value = "SELECT q FROM Quiz q WHERE q.username=:username order by q.quiz_date DESC", nativeQuery = true)
+    //@Query(value = "SELECT q FROM Quiz q WHERE q.username=:username order by q.quiz_date DESC", nativeQuery = true)
     List<Quiz> findByUsername(@Param("username") String username);
 
     // Une méthode qui va retourné un Quiz par son ID

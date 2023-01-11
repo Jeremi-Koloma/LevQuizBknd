@@ -79,21 +79,20 @@ public class AccountRessource {
             // si username existe,
             return new ResponseEntity<>("Nom d'utilisateur Existe déjà !",HttpStatus.CONFLICT);
         }
-
         // vérifier si email exist
         if (accountService.findByEmail(email) != null){
             // Si email exist
             return new ResponseEntity<>("Email Existe déjà !",HttpStatus.CONFLICT);
         }
         // Essayons d'enregister l'utilisateur
-        //try {
+        try {
             AppUser user = accountService.saveUser(firstname,lastname,username,password,email);
             return new ResponseEntity<>(user, HttpStatus.OK);
-        //}
-       // catch (Exception e){
+        }
+        catch (Exception e){
             // si ça échoue
-     //       return new ResponseEntity<>("Une Erreur s'est produit lors d'enregistremet de user", HttpStatus.BAD_REQUEST);
-      //  }
+            return new ResponseEntity<>("Une Erreur s'est produit lors d'enregistremet de user", HttpStatus.BAD_REQUEST);
+        }
     }
 
 
@@ -142,9 +141,9 @@ public class AccountRessource {
         // Une variable pour récuperer actuel mots de passe de l'utilisateur
         String currentPassword = request.get("currentPassword");
         // une variable pour le nouveau mots de passe
-        String newPassword = request.get("newPassword ");
+        String newPassword = request.get("newPassword");
         // une variable pour la confirmation du nouveau mots de passe
-        String confirmPassword = request.get("confirmPassword  ");
+        String confirmPassword = request.get("confirmPassword");
         // Vérifions si newPassword et confirmPassword sont différents
         if (!newPassword.equals(confirmPassword)){
             // Si les mots de passes sont différents
@@ -155,7 +154,7 @@ public class AccountRessource {
         String userPassword = appUser.getPassword();
         // Essayons de changer le mots de passe
         try {
-            // Vérifions si le nouveau mots de passe n'est pas null
+            // Vérifions si le nouveau mots de passe n'est pas vide
             if (!newPassword.isEmpty() && !StringUtils.isEmpty(newPassword)){
                 // Conparons les mots de passe si actuel mots de passe et celui de la base de donnée sont les mêmes
                 if (bCryptPasswordEncoder.matches(currentPassword, userPassword)){
