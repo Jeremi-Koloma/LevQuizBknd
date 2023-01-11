@@ -17,6 +17,7 @@ public interface QuizService {
 
     // Une méthode qui va retouné un quiz par son ID
     Quiz getQuizById(Long id);
+    Quiz getQuizByTitre(String Titre);
 
     // Une méthode pour retouner une liste de Quiz créer par un utilisateur
     List<Quiz> findQuizByUsername(String username );

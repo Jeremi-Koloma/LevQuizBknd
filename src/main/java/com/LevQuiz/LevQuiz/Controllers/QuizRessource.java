@@ -81,9 +81,13 @@ public class QuizRessource {
         // Extraire les données de user dans la requete pour traiter l'utlisateur
         // Recupérer son nom d'utilisateur s'il exite
         String username = request.get("username");
+        String titre = request.get("titre");
         AppUser user = accountService.findByUsername(username);
-
         // Vérifier si l'utilisateur existe
+        if (quizService.getQuizByTitre(titre) != null){
+            // Si l'utlisateur est null, n'existe pas
+            return  new ResponseEntity<>("Quiz existe déjà !", HttpStatus.NOT_FOUND);
+        }
         if (user == null){
             // Si l'utlisateur est null, n'existe pas
             return  new ResponseEntity<>("Utilisateur n'existe pas !", HttpStatus.NOT_FOUND);

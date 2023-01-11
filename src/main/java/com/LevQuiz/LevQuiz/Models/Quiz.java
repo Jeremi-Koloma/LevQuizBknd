@@ -9,6 +9,7 @@ import javax.persistence.*;
 import java.io.Serial;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 @Entity // Identifier cette classe comme une table dans la base de donnée
 @NoArgsConstructor // Généré un constructeur sans paramètre
@@ -28,6 +29,9 @@ public class Quiz implements Serializable {
     private String titre;
     private String description;
     private Date quizDate;
+
+    @OneToMany(mappedBy = "quiz", cascade = CascadeType.ALL)
+    List<Questions> questionsList;
 
 
     // ****************************    Plus la peine pour la liaison car seule Username peut Gérér    ************************

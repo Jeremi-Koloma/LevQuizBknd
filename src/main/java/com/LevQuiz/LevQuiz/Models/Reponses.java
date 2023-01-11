@@ -1,5 +1,6 @@
 package com.LevQuiz.LevQuiz.Models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -28,6 +29,7 @@ public class Reponses implements Serializable {
     private Boolean iscorrect;
 
     // FetchType.EAGER, en chargent une Reponse, affiche la question
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL) //  Plusieurs Reponses à une question (*..1)
+    @ManyToOne //  Plusieurs Reponses à une question (*..1)
+    @JsonIgnore
     private Questions questions;
 }

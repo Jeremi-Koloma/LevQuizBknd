@@ -44,6 +44,11 @@ public class QuizServiceImpl implements QuizService{
         return quizRepository.findQuizById(id);
     }
 
+    @Override
+    public Quiz getQuizByTitre(String Titre) {
+        return quizRepository.findQuizByTitre(Titre);
+    }
+
     @Override // implementation de la méthode qui va Afficher tous les Quiz créer par un l'utilisateur
     public List<Quiz> findQuizByUsername(String username) {
         return quizRepository.findByUsername(username);
