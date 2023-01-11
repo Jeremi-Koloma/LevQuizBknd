@@ -20,6 +20,6 @@ public interface ReponseService {
     Reponses updateReponse(Long id, Reponses reponses);
 
     // Une méthode pour Supprimer une Reponse
-    String deleteReponse(Long id);
+    String deleteReponseById(Long id);
 
 }

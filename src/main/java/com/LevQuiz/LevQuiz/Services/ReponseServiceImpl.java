@@ -53,7 +53,7 @@ public class ReponseServiceImpl implements ReponseService{
     }
 
     @Override // implementation de la méthode qui va supprimer une reponse
-    public String deleteReponse(Long id) {
+    public String deleteReponseById(Long id) {
         reponsesRepository.deleteById(id);
         return "Reponse supprimer !";
     }

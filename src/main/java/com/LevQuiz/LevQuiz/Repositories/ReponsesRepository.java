@@ -7,5 +7,6 @@ import org.springframework.stereotype.Repository;
 // Cette classe va étendre de JpaRepository avec EntityName et ID en param pour l'enregister dans la base de donnée
 @Repository
 public interface ReponsesRepository extends JpaRepository<Reponses, Long> {
-
+    // une méthode qui va retourné un String pour supprimer une Reponse par son Id
+    String findReponseById(Long id);
 }

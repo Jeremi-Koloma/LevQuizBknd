@@ -25,6 +25,8 @@ public class Reponses implements Serializable {
 
     private String reponse;
 
+    private Boolean iscorrect;
+
     // FetchType.EAGER, en chargent une Reponse, affiche la question
     @ManyToOne(fetch = FetchType.EAGER) //  Plusieurs Reponses à une question (*..1)
     private Questions questions;

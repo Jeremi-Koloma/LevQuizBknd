@@ -3,11 +3,14 @@ package com.LevQuiz.LevQuiz.Controllers;
 import com.LevQuiz.LevQuiz.Models.Questions;
 import com.LevQuiz.LevQuiz.Models.Reponses;
 import com.LevQuiz.LevQuiz.Repositories.QuestionsRepository;
+import com.LevQuiz.LevQuiz.Repositories.ReponsesRepository;
 import com.LevQuiz.LevQuiz.Services.ReponseService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController // Identifier cette classe comme étant un Controller;
 @RequestMapping(value = "/reponses")  // Le path, ou le lien pour le Navigateur
@@ -15,6 +18,9 @@ import org.springframework.web.bind.annotation.*;
 public class ReponsesRessource {
     // Injectons notre interface serviceReponse
     private ReponseService reponseService;
+
+    // injectons le repository Reponse
+    private ReponsesRepository reponsesRepository;
 
     // Injectons notre repositoryQuestion pour avoir accès aux Question
     private QuestionsRepository questionsRepository;
@@ -40,7 +46,32 @@ public class ReponsesRessource {
 
 
     // Une méthode qui va lister toutes les réponses
+    @GetMapping("/listResponses")
+    public ResponseEntity<?> getListResponses(){
+        // Récuperons la liste des reponses
+        List<Reponses> reponsesList = reponseService.listReponse();
+        // Vérifions si la liste n'est pas vide
+        if (reponsesList.isEmpty()){
+            // si la liste est vide
+            return  new ResponseEntity<>("Aucune Reponse trouver !", HttpStatus.NOT_FOUND);
+        }
+        // sinon s'il ya des reponse, Affiches les
+        return  new ResponseEntity<>(reponsesList, HttpStatus.OK);
+    }
 
+
+    // Une méthode pour supprimer une Reponse
+    @DeleteMapping("/deleteResponse/{id}")
+    public ResponseEntity<String> deleteResponseById(@PathVariable Long id){
+        // Recuperons la reponse dans le Repository
+        String reponseId = reponsesRepository.findReponseById(id);
+        // vérifier si la Reponse existe
+        if (reponseId == null){
+            return new ResponseEntity<>("Réponse non trouver !", HttpStatus.NOT_FOUND);
+        }
+        // sinon si la reponse existe, alors on le supprime
+        return new ResponseEntity<>(reponseId, HttpStatus.OK);
+    }
 
 
 

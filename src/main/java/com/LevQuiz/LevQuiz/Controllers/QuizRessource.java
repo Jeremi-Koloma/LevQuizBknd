@@ -109,7 +109,7 @@ public class QuizRessource {
         // Vérifier si le Quiz existe
         if (quiz == null){
             // Si le Quiz est null, n'existe pas
-            return  new ResponseEntity<>("Ce Quiz n'existe pas !", HttpStatus.NOT_FOUND);
+            return  new ResponseEntity<>("Quiz non trouver !", HttpStatus.NOT_FOUND);
         }
         // Sinon si le quiz existe, on peut essayé de le supprimer
         try {
