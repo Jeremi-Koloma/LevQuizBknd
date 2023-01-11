@@ -50,9 +50,8 @@ public class QuizServiceImpl implements QuizService{
     }
 
     @Override // implementation de la méthode qui va supprimer un Quiz
-    public Quiz deleteQuiz(Quiz quiz) {
-        quizRepository.findQuizById(quiz.getId());
-        return quiz;
+    public void deleteQuizById(Long id) {
+        quizRepository.deleteById(id);
     }
 
 }

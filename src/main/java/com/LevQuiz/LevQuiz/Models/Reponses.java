@@ -28,6 +28,6 @@ public class Reponses implements Serializable {
     private Boolean iscorrect;
 
     // FetchType.EAGER, en chargent une Reponse, affiche la question
-    @ManyToOne(fetch = FetchType.EAGER) //  Plusieurs Reponses à une question (*..1)
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL) //  Plusieurs Reponses à une question (*..1)
     private Questions questions;
 }

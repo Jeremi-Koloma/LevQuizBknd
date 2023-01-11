@@ -19,9 +19,6 @@ public class ReponsesRessource {
     // Injectons notre interface serviceReponse
     private ReponseService reponseService;
 
-    // injectons le repository Reponse
-    private ReponsesRepository reponsesRepository;
-
     // Injectons notre repositoryQuestion pour avoir accès aux Question
     private QuestionsRepository questionsRepository;
 
@@ -63,14 +60,15 @@ public class ReponsesRessource {
     // Une méthode pour supprimer une Reponse
     @DeleteMapping("/deleteResponse/{id}")
     public ResponseEntity<String> deleteResponseById(@PathVariable Long id){
-        // Recuperons la reponse dans le Repository
-        String reponseId = reponsesRepository.findReponseById(id);
+        // Recuperons la reponse
+        Reponses reponses = reponseService.findReponseById(id);
         // vérifier si la Reponse existe
-        if (reponseId == null){
+        if (reponses == null){
             return new ResponseEntity<>("Réponse non trouver !", HttpStatus.NOT_FOUND);
         }
         // sinon si la reponse existe, alors on le supprime
-        return new ResponseEntity<>(reponseId, HttpStatus.OK);
+       reponseService.deleteReponseById(id);
+        return new ResponseEntity<>("Réponse Supprimer !", HttpStatus.OK);
     }
 
 

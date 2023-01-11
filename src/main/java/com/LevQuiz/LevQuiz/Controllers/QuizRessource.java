@@ -38,8 +38,8 @@ public class QuizRessource {
 
 
     // Une méthode pour afficher un seul Quiz
-    @GetMapping("/getQuizById/{quizId}")
-    public ResponseEntity<?> getOneQuizById(@PathVariable("quizId") Long id){
+    @GetMapping("/getQuizById/{id}")
+    public ResponseEntity<?> getOneQuizById(@PathVariable("id") Long id){
         // Recupérons le le quiz
         Quiz quiz = quizService.getQuizById(id);
         // vérifions si le Quiz est nul, n'existe pas
@@ -103,7 +103,7 @@ public class QuizRessource {
 
     // Une méthode pour supprimer un Quiz
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<?> deleteQuiz(@PathVariable("id") Long id){
+    public ResponseEntity<?> deleteQuiz(@PathVariable Long id){
         // Récupérons le Quiz
         Quiz quiz = quizService.getQuizById(id);
         // Vérifier si le Quiz existe
@@ -112,14 +112,8 @@ public class QuizRessource {
             return  new ResponseEntity<>("Quiz non trouver !", HttpStatus.NOT_FOUND);
         }
         // Sinon si le quiz existe, on peut essayé de le supprimer
-        try {
-            // on le supprime
-            quizService.deleteQuiz(quiz);
-            return  new ResponseEntity<>(quiz, HttpStatus.OK);
-        }catch (Exception e){
-            // Sinon si ça échoue
-            return  new ResponseEntity<>("Une Erreur s'est produit lors de la supprimession de quiz !", HttpStatus.BAD_REQUEST);
-        }
+        quizService.deleteQuizById(id);
+        return new ResponseEntity<>("Quiz Supprimer !", HttpStatus.OK);
     }
 
 

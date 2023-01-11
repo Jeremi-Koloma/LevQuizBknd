@@ -22,7 +22,7 @@ public interface QuizService {
     List<Quiz> findQuizByUsername(String username );
 
     // Une méthode qui va retourné un Quiz pour le supprimer.
-    Quiz deleteQuiz(Quiz quiz);
+    void deleteQuizById(Long id);
 
 
 

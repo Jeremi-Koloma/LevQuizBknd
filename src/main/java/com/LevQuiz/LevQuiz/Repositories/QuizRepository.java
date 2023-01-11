@@ -13,11 +13,11 @@ import java.util.List;
 @Repository
 public interface QuizRepository extends JpaRepository<Quiz, Long> {
     // Une méthode qui va retourné une liste de Quiz par odre recent
-    //@Query(value = "SELECT quiz FROM quiz quiz order by quiz.quiz_date DESC", nativeQuery = true)
+    @Query(value = "SELECT * FROM quiz ORDER BY quiz_date DESC;", nativeQuery = true)
     List<Quiz> findAll();
 
     // Une méthode qui va retourné une liste de Quiz créer par d'un utilisateur par ordre recent
-    //@Query(value = "SELECT q FROM Quiz q WHERE q.username=:username order by q.quiz_date DESC", nativeQuery = true)
+    @Query(value = "SELECT * FROM quiz WHERE username=:username ORDER BY quiz_date DESC;", nativeQuery = true)
     List<Quiz> findByUsername(@Param("username") String username);
 
     // Une méthode qui va retourné un Quiz par son ID
@@ -25,9 +25,9 @@ public interface QuizRepository extends JpaRepository<Quiz, Long> {
     Quiz findQuizById(@Param("x") Long id);
 
     // Une méthode pour suppression de Quiz
-    @Modifying
-    @Query(value = "DELETE quiz WHERE id=:x", nativeQuery = true)
-    void deleteQuizById(@Param("x") Long id);
+    //@Modifying
+    //@Query(value = "DELETE quiz WHERE id=:x", nativeQuery = true)
+    //void deleteQuizById(@Param("x") Long id);
 
 
 }

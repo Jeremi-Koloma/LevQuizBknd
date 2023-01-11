@@ -25,6 +25,7 @@ public class Questions implements Serializable {
     private String question;
 
     // FetchType.EAGER, en chargent une Question, affiche le Quiz
-    @ManyToOne(fetch = FetchType.EAGER) // Plusieurs Questions peuvent appartenir à un seul Quiz (*..1)
+    //CascadeType.ALL , en supprimant un Quiz, on le supprime avec toutes ses question
+    @ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.REMOVE) // Plusieurs Questions peuvent appartenir à un seul Quiz (*..1)
     private Quiz quiz;
 }
