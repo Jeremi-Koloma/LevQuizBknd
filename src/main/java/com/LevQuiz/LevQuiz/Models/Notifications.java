@@ -24,6 +24,8 @@ public class Notifications implements Serializable {
     @Column(updatable = false, nullable = false) // à revoir après
     private Long id;
 
+    private String titrequiz;
+
     private String notification;
     private Date notificationDate;
 

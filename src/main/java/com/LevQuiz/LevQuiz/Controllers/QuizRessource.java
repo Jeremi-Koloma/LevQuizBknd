@@ -126,7 +126,7 @@ public class QuizRessource {
     public ResponseEntity<?> addQuizToStudent(@PathVariable Long idQuiz, @PathVariable String username){
         // Recupérons d'abord le quiz
         Quiz quiz = quizService.getQuizById(idQuiz);
-        //
+        // Récupérons l'utilisateur aussi
         AppUser appUser = accountService.findByUsername(username);
 
         // vérifions si le quiz existe

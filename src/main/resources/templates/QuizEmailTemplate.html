@@ -61,9 +61,16 @@
     color:white;
     padding:10px;
     border-radius:7px;
+
 }
 .usernameColor{
     color:#274F8A;
+}
+.quizTitreColor{
+    color:#274F8A;
+    text-decoration: underline;
+    font-weight: bold;
+    text-align: center;
 }
 
 </style>
@@ -93,8 +100,8 @@
                             <tr>
                                 <td class="head-title"
                                     style="border-collapse: collapse; border: 0; margin: 0; padding: 0; -webkit-text-size-adjust: none; color: #555559; font-family: Arial, sans-serif; font-size: 28px; line-height: 34px; font-weight: bold; text-align: center;">
-                                    <div class="mktEditable welcomeTitle" id="main_title">
-                                       <p class="welcomP"> Bienvenue sur LevQuiz !</p>
+                                    <div class="mktEditable welcomeTitle" id="main_title" align="center">
+                                       <p class="welcomP"> Nouveau Quiz | LevQuiz!</p>
                                     </div>
                                 </td>
                             </tr>
@@ -107,13 +114,12 @@
                                     </h4>
                                     <div class="mktEditable" id="main_text">
                                         <p>
-                                            Raviz de vos voir sur notre plateform !
+                                            Raviz de vous voir sur notre plateform !
                                         </p>
 
                                         <p>
-                                            LevQuiz est une application permettant de faciliter le suivi de compétences
-                                            des apprenants par les formateurs en rendant les tests à la fois instructifs,
-                                            amusants et agréables.
+                                            Votre formateur a assigné un quiz : <span class="quizTitreColor" th:text="${notifications.titrequiz }"></span>
+                                            Merci et à très vite sur la plateforme d’apprentissage LevQuiz !
                                         </p>
                                         <!--
                                              <p>Voici les informations sur votre compte :</p>

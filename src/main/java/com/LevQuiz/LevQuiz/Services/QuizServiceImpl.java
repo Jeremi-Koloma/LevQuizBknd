@@ -6,14 +6,13 @@ import com.LevQuiz.LevQuiz.Models.Quiz;
 import com.LevQuiz.LevQuiz.Repositories.AppUserRepository;
 import com.LevQuiz.LevQuiz.Repositories.NotificationsRepository;
 import com.LevQuiz.LevQuiz.Repositories.QuizRepository;
+import com.LevQuiz.LevQuiz.Utility.EmailConstructor;
 import lombok.AllArgsConstructor;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 // Cette classe va implémenté l'interface ServiceQuiz
 @Service // Pour dire qu'il sagit du service logique
@@ -24,8 +23,14 @@ public class QuizServiceImpl implements QuizService{
     // Injectons le RepositoryQuiz
     private QuizRepository quizRepository;
 
-    //
-    private NotificationsRepository notificationsRepository;
+
+
+    // Injectons EmailContructor
+    private EmailConstructor emailConstructor;
+
+    // Injectons JavaMailSender pour envoie de mail
+    private JavaMailSender mailSender;
+
 
     // Injectons notre Repository AppUser pour pouvoir assigner un quiz à un apprenant
     private AppUserRepository appUserRepository;
@@ -86,11 +91,15 @@ public class QuizServiceImpl implements QuizService{
         Date date = new Date();
         // Affectons la date d'assignation, à la date de notification
         notifications.setNotificationDate(date);
+        notifications.setTitrequiz(quiz.getTitre());
         // Créeons une liste de notification pour avoir une liste de notifications
-        List<Notifications> notificationsList = new ArrayList<>();
+        List<Notifications> notificationsList = appUser.getNotificationsList();
         notificationsList.add(notifications);
         // maintenant affectons la liste des notification à l'utilisateur
         appUser.setNotificationsList(notificationsList);
+
+        appUserRepository.save(appUser);
+        mailSender.send(emailConstructor.constructQuizEmail(appUser,notifications));
         // On l'enregiste maintenant
         return quizRepository.save(quiz);
     }

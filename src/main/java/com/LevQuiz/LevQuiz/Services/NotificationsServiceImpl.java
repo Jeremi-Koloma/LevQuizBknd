@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.List;
 
 @Service // Pour dire qu'il sagit du service logique
 @Transactional
@@ -15,9 +16,15 @@ public class NotificationsServiceImpl implements NotificationsService {
     // Implementons la méthode
     // Injectons le Repository
     public NotificationsRepository notificationsRepository;
+
+
     @Override
-    public void saveNotifications(Notifications notifications) {
-        notificationsRepository.save(notifications);
+    public List<Notifications> listNotification() {
+        return notificationsRepository.findAll();
     }
 
+    @Override
+    public Notifications getNotification(Notifications notifications) {
+        return notificationsRepository.save(notifications);
+    }
 }

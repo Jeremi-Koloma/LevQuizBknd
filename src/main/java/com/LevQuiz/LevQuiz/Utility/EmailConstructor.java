@@ -1,6 +1,7 @@
 package com.LevQuiz.LevQuiz.Utility;
 
 import com.LevQuiz.LevQuiz.Models.AppUser;
+import com.LevQuiz.LevQuiz.Models.Notifications;
 import lombok.AllArgsConstructor;
 import org.springframework.core.env.Environment;
 import org.springframework.mail.javamail.MimeMessageHelper;
@@ -62,7 +63,32 @@ public class EmailConstructor {
                 MimeMessageHelper email = new MimeMessageHelper(mimeMessage);
                 email.setPriority(1);
                 email.setTo(user.getEmail());
-                email.setSubject("Bienvenu sur levQuiz");
+                email.setSubject("Reset Password | LevQuiz");
+                email.setText(text, true);
+                email.setFrom(new InternetAddress(environment.getProperty("support.email")));
+            }
+        };
+        return messagePreparator;
+    }
+
+
+    //interface MimeMessagePreparator // une méthode qui va envoyé l'email à l'utilisateur quand on l'assigne un Quiz
+    public MimeMessagePreparator constructQuizEmail(AppUser user,Notifications notifications){
+        // Context de thymleaf, pour lier user et password à notre html
+        Context context = new Context();
+        context.setVariable("user", user); // Lier le username au context thymleaf
+        context.setVariable("notifications", notifications); //  Lier le password au context thymleaf
+        String text= templateEngine.process("QuizEmailTemplate", context); // on passe le template html et le context à cette varriable text
+
+        // Génération du message
+        // Génération du message
+        MimeMessagePreparator messagePreparator = new MimeMessagePreparator() {
+            @Override
+            public void prepare(MimeMessage mimeMessage) throws Exception {
+                MimeMessageHelper email = new MimeMessageHelper(mimeMessage);
+                email.setPriority(1);
+                email.setTo(user.getEmail());
+                email.setSubject("Nouveau Quiz sur LevQuiz");
                 email.setText(text, true);
                 email.setFrom(new InternetAddress(environment.getProperty("support.email")));
             }
