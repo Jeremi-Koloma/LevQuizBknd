@@ -19,6 +19,9 @@ public class ReponsesRessource {
     // Injectons notre interface serviceReponse
     private ReponseService reponseService;
 
+    // Injectons le Repository de Reponse
+    private ReponsesRepository reponsesRepository;
+
     // Injectons notre repositoryQuestion pour avoir accès aux Question
     private QuestionsRepository questionsRepository;
 
@@ -31,6 +34,10 @@ public class ReponsesRessource {
         if (idQuest == null){
             // Si la Question est null, n'existe pas
             return  new ResponseEntity<>("Question non trouver !", HttpStatus.NOT_FOUND);
+        }
+        // Vérifier si la Reponse existe déja
+        if (reponsesRepository.existsByReponse(reponses.getReponse())){
+            return new ResponseEntity<>("Réponse existe déjà !", HttpStatus.CONFLICT);
         }
         // sinon si la question existe, essayons d'enregister la Reponse
         try {

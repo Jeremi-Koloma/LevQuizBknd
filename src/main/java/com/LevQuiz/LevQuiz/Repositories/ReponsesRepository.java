@@ -9,4 +9,7 @@ import org.springframework.stereotype.Repository;
 public interface ReponsesRepository extends JpaRepository<Reponses, Long> {
     // une méthode qui va retourné un String pour supprimer une Reponse par son Id
     String findReponseById(Long id);
+
+    // Une méthode qui va permet de verifier si une question existe déja
+    boolean existsByReponse(String reponse);
 }

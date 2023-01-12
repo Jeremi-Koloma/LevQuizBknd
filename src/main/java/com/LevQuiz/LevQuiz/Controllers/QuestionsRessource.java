@@ -38,6 +38,10 @@ public class QuestionsRessource {
             // si le Quiz n'existe pas
             return new ResponseEntity<>("Quiz non trouver !", HttpStatus.NOT_FOUND);
         }
+        // Vérifier si la question existe déjà
+        if(questionsRepository.existsByQuestion(questions.getQuestion())){
+            return new ResponseEntity<>("Question existe déja !", HttpStatus.CONFLICT);
+        }
         // sinon si le quiz existe, alors essayons de l'attribuer une Question
         try {
             // on l'attribue la Question

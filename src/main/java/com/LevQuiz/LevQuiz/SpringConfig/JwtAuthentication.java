@@ -70,7 +70,7 @@ public class JwtAuthentication extends UsernamePasswordAuthenticationFilter {
 
         // Création du Token
         String jwtToken = JWT.create()
-                .withIssuer("lzvQuiz.com") // Le nom de l'application qui a généré le token
+                .withIssuer("levQuiz.com") // Le nom de l'application qui a généré le token
                 .withSubject(user.getUsername()) // le nom d'utilisateur de la personne
                 .withArrayClaim("roles",roles.stream().toArray(String[]::new)) // liste des roles de l'utilisateur
                 .withExpiresAt(new Date(System.currentTimeMillis() + SecurityConstants.EXPIRATION_TIME)) // date d'expiration

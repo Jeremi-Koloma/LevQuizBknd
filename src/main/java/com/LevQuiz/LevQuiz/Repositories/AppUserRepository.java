@@ -11,13 +11,13 @@ import java.util.List;
 // Cette classe va étendre de l'interface JpaRepository pour avoir accès à la base de donnée
 @Repository
 public interface AppUserRepository extends JpaRepository<AppUser, Long> {
-    //
+    // Une méthode pour trouver un utilisateur par son Username
     AppUser findByUsername(String username);
 
-    //
+    // Une méthode qui va permettre de retrouver un utilisateur par son email.
     AppUser findByEmail(String email);
 
-    //
+    // une méthode qui va permettre de retourner un utilisateur par son id
     @Query(value = "SELECT appuser FROM appuser appuser WHERE appuser.id=:x", nativeQuery = true)
     AppUser findUserById(@Param("x") Long id);
 

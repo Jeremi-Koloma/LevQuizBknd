@@ -1,12 +1,16 @@
 package com.LevQuiz.LevQuiz.Services;
 
 import com.LevQuiz.LevQuiz.Models.AppUser;
+import com.LevQuiz.LevQuiz.Models.Notifications;
 import com.LevQuiz.LevQuiz.Models.Quiz;
+import com.LevQuiz.LevQuiz.Repositories.AppUserRepository;
+import com.LevQuiz.LevQuiz.Repositories.NotificationsRepository;
 import com.LevQuiz.LevQuiz.Repositories.QuizRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -19,6 +23,12 @@ public class QuizServiceImpl implements QuizService{
     // Implementons les méthodes
     // Injectons le RepositoryQuiz
     private QuizRepository quizRepository;
+
+    //
+    private NotificationsRepository notificationsRepository;
+
+    // Injectons notre Repository AppUser pour pouvoir assigner un quiz à un apprenant
+    private AppUserRepository appUserRepository;
 
     @Override
     public Quiz saveQuiz(AppUser appUser, HashMap<String, String> request) {
@@ -57,6 +67,32 @@ public class QuizServiceImpl implements QuizService{
     @Override // implementation de la méthode qui va supprimer un Quiz
     public void deleteQuizById(Long id) {
         quizRepository.deleteById(id);
+    }
+
+    @Override // implementation de la méthode qui va permettre d'assigner un quiz à un apprenant
+    public Quiz addQuizToUser(Long idQuiz, String username) {
+        // Récupérons d'abord le quiz par son id pour pouvoir l'assigner un apprenant
+        Quiz quiz= quizRepository.findQuizById(idQuiz);
+        // Recuperons l'utilisateur dans son Repository
+        AppUser appUser = appUserRepository.findByUsername(username);
+        // Maintenant affectons le Quiz à l'utilisateur
+        quiz.setUsername(username);
+        // une variable pour le message
+        String message = username +"! On vous a assigner un nouveau Quiz intutile: "+ quiz.getTitre();
+        // Création d'un object notification pour affecter le message à notification
+        Notifications notifications = new Notifications();
+        notifications.setNotification(message);
+        // Recupération de la date d'assignation
+        Date date = new Date();
+        // Affectons la date d'assignation, à la date de notification
+        notifications.setNotificationDate(date);
+        // Créeons une liste de notification pour avoir une liste de notifications
+        List<Notifications> notificationsList = new ArrayList<>();
+        notificationsList.add(notifications);
+        // maintenant affectons la liste des notification à l'utilisateur
+        appUser.setNotificationsList(notificationsList);
+        // On l'enregiste maintenant
+        return quizRepository.save(quiz);
     }
 
 }

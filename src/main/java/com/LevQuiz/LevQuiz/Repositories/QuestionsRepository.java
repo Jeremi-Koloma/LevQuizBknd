@@ -1,6 +1,7 @@
 package com.LevQuiz.LevQuiz.Repositories;
 
 import com.LevQuiz.LevQuiz.Models.Questions;
+import org.springframework.data.domain.Example;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
@@ -12,4 +13,8 @@ import java.util.Optional;
 public interface QuestionsRepository extends JpaRepository<Questions, Long> {
     // une méthode pour retouner une question par son id
     Questions findQuestionsById(Long id);
+
+    // Une méthode permettant de vérifier si cette question existe
+    boolean existsByQuestion(String question);
+
 }

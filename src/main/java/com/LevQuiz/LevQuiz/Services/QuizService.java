@@ -3,7 +3,6 @@ package com.LevQuiz.LevQuiz.Services;
 import com.LevQuiz.LevQuiz.Models.AppUser;
 import com.LevQuiz.LevQuiz.Models.Quiz;
 
-import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.List;
 
@@ -25,6 +24,8 @@ public interface QuizService {
     // Une méthode qui va retourné un Quiz pour le supprimer.
     void deleteQuizById(Long id);
 
+    // une méthode qui va permettre d'assigner un Quiz à un apprenant
+    Quiz addQuizToUser(Long idQuiz, String username);
 
 
 

@@ -26,7 +26,7 @@ public class ReponseServiceImpl implements ReponseService{
     public Reponses saveReponse(Reponses reponses, Long idquestion) {
         // créeons une variable pour stocker le question qui se trouve dans RepositoryQuestion
         Questions questions = questionsRepository.findQuestionsById(idquestion);
-        // Maitenant affectons la Question à la reponse
+        // Maitenant affectons la Reponse à la Question
         reponses.setQuestions(questions);
         // Enregister la reponse
         return reponsesRepository.save(reponses);

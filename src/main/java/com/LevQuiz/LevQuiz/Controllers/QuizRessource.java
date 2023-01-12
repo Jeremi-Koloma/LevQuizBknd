@@ -86,7 +86,7 @@ public class QuizRessource {
         // Vérifier si l'utilisateur existe
         if (quizService.getQuizByTitre(titre) != null){
             // Si l'utlisateur est null, n'existe pas
-            return  new ResponseEntity<>("Quiz existe déjà !", HttpStatus.NOT_FOUND);
+            return  new ResponseEntity<>("Quiz existe déjà !", HttpStatus.CONFLICT);
         }
         if (user == null){
             // Si l'utlisateur est null, n'existe pas
@@ -121,7 +121,27 @@ public class QuizRessource {
     }
 
 
-    // Une méthode pour Enregister les photos de profile
+    // Une méthode pour Assigner un Quiz à un Apprenant
+    @PostMapping("/addQuizToStudent/{idQuiz}/{username}")
+    public ResponseEntity<?> addQuizToStudent(@PathVariable Long idQuiz, @PathVariable String username){
+        // Recupérons d'abord le quiz
+        Quiz quiz = quizService.getQuizById(idQuiz);
+        //
+        AppUser appUser = accountService.findByUsername(username);
+
+        // vérifions si le quiz existe
+        if (quiz == null){
+            return new ResponseEntity<>("Quiz non trouver !", HttpStatus.NOT_FOUND);
+        }
+        // vérifions si l'utilisateur existe
+        if (appUser == null){
+            return new ResponseEntity<>("utilisateur non trouver !", HttpStatus.NOT_FOUND);
+        }
+        // sinon si Tout existe, Alors on l'affecte à l'utilisateur
+        quizService.addQuizToUser(idQuiz, username);
+        return new ResponseEntity<>("Quiz Affecter avec succes !", HttpStatus.OK);
+
+    }
 
 
 

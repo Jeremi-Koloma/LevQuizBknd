@@ -27,6 +27,8 @@ public class Questions implements Serializable {
     private Long id;
     private String question;
 
+    private Long duree;
+
     // FetchType.EAGER, en chargent une Question, affiche le Quiz
     //CascadeType.ALL , en supprimant un Quiz, on le supprime avec toutes ses question
 
