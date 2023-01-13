@@ -54,4 +54,11 @@ public class AppUser implements Serializable {
     // FetchType.LAZY, en chargent l'utilisateur, n'affiche pas ses Notifications
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY) // un utilisateur peut avoir plusieurs Notifications vise vers ça
     private List<Notifications> notificationsList;
+
+    // Rélation pour jouer à un Quiz
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "jeux",
+            joinColumns = @JoinColumn(name = "id_user"),
+            inverseJoinColumns = @JoinColumn(name = "id_quiz"))
+    private List<Quiz> quizList;
 }

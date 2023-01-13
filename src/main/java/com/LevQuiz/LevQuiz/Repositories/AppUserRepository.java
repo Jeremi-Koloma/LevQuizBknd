@@ -18,8 +18,7 @@ public interface AppUserRepository extends JpaRepository<AppUser, Long> {
     AppUser findByEmail(String email);
 
     // une méthode qui va permettre de retourner un utilisateur par son id
-    @Query(value = "SELECT appuser FROM appuser appuser WHERE appuser.id=:x", nativeQuery = true)
-    AppUser findUserById(@Param("x") Long id);
+    AppUser findUserById(Long id);
 
     // Retourner une liste des utilisateurs pour un champs de recherche l'utilisateur
     List<AppUser> findByUsernameContaining(String username);

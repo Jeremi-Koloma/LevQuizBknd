@@ -1,9 +1,11 @@
 package com.LevQuiz.LevQuiz.Services;
 
 import com.LevQuiz.LevQuiz.Models.AppUser;
+import com.LevQuiz.LevQuiz.Models.Quiz;
 import com.LevQuiz.LevQuiz.Models.Role;
 import com.LevQuiz.LevQuiz.Models.UserRole;
 import com.LevQuiz.LevQuiz.Repositories.AppUserRepository;
+import com.LevQuiz.LevQuiz.Repositories.QuizRepository;
 import com.LevQuiz.LevQuiz.Repositories.RoleRepository;
 import com.LevQuiz.LevQuiz.Utility.Constants;
 import com.LevQuiz.LevQuiz.Utility.EmailConstructor;
@@ -35,6 +37,9 @@ public class AccountServiceImpl implements AccountService {
 
     // Injectons RoleRepository pour enregistrer les Roles
     private RoleRepository roleRepository;
+
+    // injectons le Repository Quiz pour jouer à un Quiz
+    private QuizRepository quizRepository;
 
 
     // Injectons EmailContructor
@@ -178,5 +183,21 @@ public class AccountServiceImpl implements AccountService {
     @Override // implementation de la méthode qui va simplement enregistrer l'utilisateur
     public AppUser simpleSave(AppUser appUser) {
        return appUserRepository.save(appUser);
+    }
+
+    @Override // implementation de la méthode qui va permettre de jouer à un Quiz
+    public AppUser playQuiz(Long iduser, Long idquiz) {
+        // Recuperons l'utilisateur
+        AppUser appUser = appUserRepository.findUserById(iduser);
+        // Recupérons le Quiz
+        Quiz quiz = quizRepository.findQuizById(idquiz);
+        // Récupérons la liste des Quiz de l'utilisateur
+        List<Quiz> quizList = appUser.getQuizList();
+        // Ajoutons le quiz recupéré à la liste de quiz de l'utilisateur
+        quizList.add(quiz);
+        // Retournons cette liste de quiz à l'utilisateur
+        appUser.setQuizList(quizList);
+        // maintenant on enregistre l'utilisateur avec ses quiz
+        return appUserRepository.save(appUser);
     }
 }

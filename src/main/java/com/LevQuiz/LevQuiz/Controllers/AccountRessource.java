@@ -1,6 +1,8 @@
 package com.LevQuiz.LevQuiz.Controllers;
 
 import com.LevQuiz.LevQuiz.Models.AppUser;
+import com.LevQuiz.LevQuiz.Models.Quiz;
+import com.LevQuiz.LevQuiz.Repositories.QuizRepository;
 import com.LevQuiz.LevQuiz.Services.AccountService;
 import lombok.AllArgsConstructor;
 import org.apache.commons.lang3.StringUtils;
@@ -23,6 +25,9 @@ public class AccountRessource {
 
     // Injectons l'interface AccountService
     private AccountService accountService;
+
+    // injectons le QuizRepository
+    private QuizRepository quizRepository;
 
     // Une méthode pour Lister les utilisateurs
     @GetMapping("/listUsers")
@@ -189,6 +194,26 @@ public class AccountRessource {
     }
 
 
+    // une méthode qui va permettre de jouer à un Quiz
+    @PostMapping(value = "/playQuiz/{iduser}/{idquiz}")
+    public ResponseEntity<?> playQuiz(@PathVariable Long iduser, @PathVariable Long idquiz){
+        // Recupérons l'utilisateur
+        AppUser appUser = accountService.findUserById(iduser);
+        // Recupérons le quiz
+        Quiz quiz = quizRepository.findQuizById(idquiz);
+
+        // vérifions si l'utilisateur existe
+        if (appUser == null){
+            return new ResponseEntity<>("Cet utilisateur n'existe pas !", HttpStatus.NOT_FOUND);
+        }
+
+        // vérifions si le quiz existe
+        if (quiz == null){
+            return new ResponseEntity<>("Quiz non trouver !", HttpStatus.NOT_FOUND);
+        }
+        accountService.playQuiz(iduser, idquiz);
+        return new ResponseEntity<>("Jouer avec succes !", HttpStatus.OK);
+    }
 
 
 }

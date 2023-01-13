@@ -52,4 +52,7 @@ public interface AccountService {
     // un simple savegarde des utilisateurs
     AppUser simpleSave(AppUser appUser);
 
+    // une méthode qui va permettre de jouer à un quiz
+    AppUser playQuiz(Long iduser, Long idquiz);
+
 }

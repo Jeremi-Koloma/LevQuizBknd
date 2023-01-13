@@ -25,8 +25,9 @@ public class Questions implements Serializable {
     @Id // Identifier notre id
     @Column(updatable = false, nullable = false) // à revoir après
     private Long id;
-    private String question;
 
+    private String question;
+    private Long points;
     private Long duree;
 
     // FetchType.EAGER, en chargent une Question, affiche le Quiz
