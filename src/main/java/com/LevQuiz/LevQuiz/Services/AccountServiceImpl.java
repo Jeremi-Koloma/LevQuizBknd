@@ -88,6 +88,7 @@ public class AccountServiceImpl implements AccountService {
 
     @Override // implementation la méthode qui va retourné l'utlisateur par son nom
     public AppUser findByUsername(String username) {
+        System.out.println("-----------"+username);
         return appUserRepository.findByUsername(username);
     }
 

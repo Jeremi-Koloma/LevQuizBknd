@@ -7,6 +7,7 @@ import com.LevQuiz.LevQuiz.Services.QuizService;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import org.apache.commons.lang3.RandomStringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -18,15 +19,16 @@ import java.util.List;
 
 @RestController // pour identifier la classe comme un controller
 @RequestMapping("/quiz") // le lien du path des les url
-@AllArgsConstructor // Pour injections des dépendances
 @NoArgsConstructor
 public class QuizRessource {
 
     private String quizImageName;
     
     // Injectons l'interface QuizService
+    @Autowired
     private QuizService quizService;
     //Injectons le AccountService
+    @Autowired
     private AccountService accountService;
 
     // Une méthode pour afficher la liste des Quiz
@@ -64,7 +66,7 @@ public class QuizRessource {
     @GetMapping("/getQuizByUsername/{username}")
     public ResponseEntity<?> getQuizByUsername(@PathVariable("username") String username){
         // Recupérer son nom d'utilisateur s'il exite
-        AppUser user = getAppUser(username);
+        AppUser user = accountService.findByUsername(username);
         // Vérifier si l'utilisateur existe
         if (user == null){
             // Si l'utlisateur est null, n'existe pas
@@ -88,10 +90,9 @@ public class QuizRessource {
     public ResponseEntity<?> saveQuiz(@RequestBody HashMap<String, String> request){
         // Extraire les données de user dans la requete pour traiter l'utlisateur
         // Recupérer son nom d'utilisateur s'il exite
-        //String quizImageName = request.get("quizImageName");
         String username = request.get("username");
         String titre = request.get("titre");
-        AppUser user = getAppUser(username);
+        AppUser user = accountService.findByUsername(username);
         // Vérifier si l'utilisateur existe
         if (quizService.getQuizByTitre(titre) != null){
             // Si l'utlisateur est null, n'existe pas
@@ -141,7 +142,7 @@ public class QuizRessource {
         // Recupérons d'abord le quiz
         Quiz quiz = quizService.getQuizById(idQuiz);
         // Récupérons l'utilisateur aussi
-        AppUser appUser = getAppUser(username);
+        AppUser appUser = accountService.findByUsername(username);
 
         // vérifions si le quiz existe
         if (quiz == null){
@@ -170,9 +171,6 @@ public class QuizRessource {
     }
 
 
-    private AppUser getAppUser(String username) {
-        return accountService.findByUsername(username);
-    }
 
 
 
