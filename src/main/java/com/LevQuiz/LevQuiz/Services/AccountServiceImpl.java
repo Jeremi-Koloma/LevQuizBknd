@@ -107,9 +107,21 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override  // Ajouter un Rôle à un utilisateur
-    public void addNewRole(Role role) {
-        roleRepository.save(role);
+    public Role addNewRole(Role role) {
+        if(role.getName()!= null){
+            roleRepository.save(role);
+        }
+        else {
+            try {
+                throw new Exception();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return role;
     }
+
+
 
     @Override // implementation de la méthode qui va Affecter des Roles à un utilisateur
     public void addRoleToUser(String userName, String name) {
@@ -196,7 +208,7 @@ public class AccountServiceImpl implements AccountService {
         // Ajoutons le quiz recupéré à la liste de quiz de l'utilisateur
         quizList.add(quiz);
         // Retournons cette liste de quiz à l'utilisateur
-        appUser.setQuizList(quizList);
+        appUser.setQuizList((Quiz) quizList);
         // maintenant on enregistre l'utilisateur avec ses quiz
         return appUserRepository.save(appUser);
     }

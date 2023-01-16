@@ -1,10 +1,6 @@
 package com.LevQuiz.LevQuiz.Models;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 import javax.persistence.*;
 import java.io.Serial;
@@ -15,10 +11,6 @@ import java.util.List;
 import java.util.Set;
 
 @Entity // Identifier cette classe comme une table dans la base de donnée
-@NoArgsConstructor // constructeur sans argument
-@AllArgsConstructor // constructeur avce tous les paramètres
-@Getter // Génération des getters
-@Setter // Génération des getters
 public class AppUser implements Serializable {
 
     @Serial
@@ -60,5 +52,104 @@ public class AppUser implements Serializable {
     @JoinTable(name = "jeux",
             joinColumns = @JoinColumn(name = "id_user"),
             inverseJoinColumns = @JoinColumn(name = "id_quiz"))
+
     private List<Quiz> quizList;
+
+    // constructeur sans argument
+    public AppUser() {
+    }
+
+    // constructeur avce tous les paramètres
+    public AppUser(Long id, String firstname, String lastname, String username, String password, String email, Date createdDate, Set<UserRole> userRoles, List<Notifications> notificationsList, List<Quiz> quizList) {
+        this.id = id;
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.username = username;
+        this.password = password;
+        this.email = email;
+        this.createdDate = createdDate;
+        this.userRoles = userRoles;
+        this.notificationsList = notificationsList;
+        this.quizList = quizList;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getFirstname() {
+        return firstname;
+    }
+
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
+    }
+
+    public String getLastname() {
+        return lastname;
+    }
+
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public Date getCreatedDate() {
+        return createdDate;
+    }
+
+    public void setCreatedDate(Date createdDate) {
+        this.createdDate = createdDate;
+    }
+
+    public Set<UserRole> getUserRoles() {
+        return userRoles;
+    }
+
+    public void setUserRoles(Set<UserRole> userRoles) {
+        this.userRoles = userRoles;
+    }
+
+    public List<Notifications> getNotificationsList() {
+        return notificationsList;
+    }
+
+    public void setNotificationsList(List<Notifications> notificationsList) {
+        this.notificationsList = notificationsList;
+    }
+
+    public List<Quiz> getQuizList() {
+        return quizList;
+    }
+
+    public void setQuizList(Quiz quizList) {
+        this.quizList.add(quizList);
+    }
 }

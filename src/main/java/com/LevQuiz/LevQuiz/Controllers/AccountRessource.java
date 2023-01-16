@@ -2,6 +2,7 @@ package com.LevQuiz.LevQuiz.Controllers;
 
 import com.LevQuiz.LevQuiz.Models.AppUser;
 import com.LevQuiz.LevQuiz.Models.Quiz;
+import com.LevQuiz.LevQuiz.Models.Role;
 import com.LevQuiz.LevQuiz.Repositories.QuizRepository;
 import com.LevQuiz.LevQuiz.Services.AccountService;
 import lombok.AllArgsConstructor;
@@ -213,6 +214,13 @@ public class AccountRessource {
         }
         accountService.playQuiz(iduser, idquiz);
         return new ResponseEntity<>("Jouer avec succes !", HttpStatus.OK);
+    }
+
+    // une méthode pour ajouter un Role
+    @PostMapping("/role")
+    public ResponseEntity<String> AddNewRole(@RequestBody Role role) {
+        accountService.addNewRole(role);
+        return new ResponseEntity<String>("Role Ajouté avec succès!", HttpStatus.OK);
     }
 
 

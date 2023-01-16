@@ -5,17 +5,25 @@ import com.LevQuiz.LevQuiz.Models.Quiz;
 import com.LevQuiz.LevQuiz.Services.AccountService;
 import com.LevQuiz.LevQuiz.Services.QuizService;
 import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.List;
+
 
 @RestController // pour identifier la classe comme un controller
 @RequestMapping("/quiz") // le lien du path des les url
 @AllArgsConstructor // Pour injections des dépendances
+@NoArgsConstructor
 public class QuizRessource {
+
+    private String quizImageName;
+    
     // Injectons l'interface QuizService
     private QuizService quizService;
     //Injectons le AccountService
@@ -56,7 +64,7 @@ public class QuizRessource {
     @GetMapping("/getQuizByUsername/{username}")
     public ResponseEntity<?> getQuizByUsername(@PathVariable("username") String username){
         // Recupérer son nom d'utilisateur s'il exite
-        AppUser user = accountService.findByUsername(username);
+        AppUser user = getAppUser(username);
         // Vérifier si l'utilisateur existe
         if (user == null){
             // Si l'utlisateur est null, n'existe pas
@@ -80,9 +88,10 @@ public class QuizRessource {
     public ResponseEntity<?> saveQuiz(@RequestBody HashMap<String, String> request){
         // Extraire les données de user dans la requete pour traiter l'utlisateur
         // Recupérer son nom d'utilisateur s'il exite
+        //String quizImageName = request.get("quizImageName");
         String username = request.get("username");
         String titre = request.get("titre");
-        AppUser user = accountService.findByUsername(username);
+        AppUser user = getAppUser(username);
         // Vérifier si l'utilisateur existe
         if (quizService.getQuizByTitre(titre) != null){
             // Si l'utlisateur est null, n'existe pas
@@ -92,9 +101,10 @@ public class QuizRessource {
             // Si l'utlisateur est null, n'existe pas
             return  new ResponseEntity<>("Utilisateur n'existe pas !", HttpStatus.NOT_FOUND);
         }
+        quizImageName = RandomStringUtils.randomAlphabetic(10);
         // Sinon si l'utilisateur existe alors il en ajouter un autre
         try {
-            Quiz quiz = quizService.saveQuiz(user, request);
+            Quiz quiz = quizService.saveQuiz(user, request, quizImageName);
             // on l'enregistre
             return  new ResponseEntity<>(quiz, HttpStatus.CREATED);
         }catch (Exception e){
@@ -107,7 +117,7 @@ public class QuizRessource {
 
     // Une méthode pour supprimer un Quiz
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<?> deleteQuiz(@PathVariable Long id){
+    public ResponseEntity<?> deleteQuiz(@PathVariable("id")Long id){
         // Récupérons le Quiz
         Quiz quiz = quizService.getQuizById(id);
         // Vérifier si le Quiz existe
@@ -116,8 +126,12 @@ public class QuizRessource {
             return  new ResponseEntity<>("Quiz non trouver !", HttpStatus.NOT_FOUND);
         }
         // Sinon si le quiz existe, on peut essayé de le supprimer
-        quizService.deleteQuizById(id);
-        return new ResponseEntity<>("Quiz Supprimer !", HttpStatus.OK);
+        try{
+            quizService.deleteQuiz(quiz);
+            return new ResponseEntity<>("Quiz Supprimer !", HttpStatus.OK);
+        }catch (Exception e){
+            return new ResponseEntity<>("Erreur de suppression du Quiz !", HttpStatus.BAD_REQUEST);
+        }
     }
 
 
@@ -127,7 +141,7 @@ public class QuizRessource {
         // Recupérons d'abord le quiz
         Quiz quiz = quizService.getQuizById(idQuiz);
         // Récupérons l'utilisateur aussi
-        AppUser appUser = accountService.findByUsername(username);
+        AppUser appUser = getAppUser(username);
 
         // vérifions si le quiz existe
         if (quiz == null){
@@ -144,7 +158,21 @@ public class QuizRessource {
     }
 
 
+    // Une méthode pour ajouter une image à un quiz
+    @PostMapping("/photoQuiz/upload")
+     public ResponseEntity<String> fileUpload(HttpServletRequest request){
+        try {
+            quizService.saveQuizImage(request,quizImageName);
+            return new ResponseEntity<>("Image ajouter !", HttpStatus.OK);
+        }catch (Exception e){
+            return new ResponseEntity<>("image non Enregister !", HttpStatus.BAD_REQUEST);
+        }
+    }
 
+
+    private AppUser getAppUser(String username) {
+        return accountService.findByUsername(username);
+    }
 
 
 

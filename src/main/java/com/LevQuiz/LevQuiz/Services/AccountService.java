@@ -23,7 +23,7 @@ public interface AccountService {
     Role findUserRoleByName(String role);
 
     // une méthode qui permet d'ajouter les rôles dans la base de donnée
-    void addNewRole (Role role);
+    Role addNewRole (Role role);
 
     // Une méthode de type void qui permet d'affecter un rôle à un user
     void addRoleToUser (String userName, String name);

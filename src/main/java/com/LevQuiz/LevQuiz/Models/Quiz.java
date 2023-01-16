@@ -28,6 +28,8 @@ public class Quiz implements Serializable {
     private String username;
     private String titre;
     private String description;
+    private Long imagequizid;
+    private String imageName;
     private Date quizDate;
 
     @OneToMany(mappedBy = "quiz", cascade = CascadeType.ALL)
