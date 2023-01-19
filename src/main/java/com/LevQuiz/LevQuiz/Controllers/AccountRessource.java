@@ -83,12 +83,12 @@ public class AccountRessource {
         // Vérifions si le non d'utilisateur existe déja
         if (accountService.findByUsername(username) != null){
             // si username existe,
-            return new ResponseEntity<>("Nom d'utilisateur Existe déjà !",HttpStatus.CONFLICT);
+            return new ResponseEntity<>("usernameExist",HttpStatus.CONFLICT);
         }
         // vérifier si email exist
         if (accountService.findByEmail(email) != null){
             // Si email exist
-            return new ResponseEntity<>("Email Existe déjà !",HttpStatus.CONFLICT);
+            return new ResponseEntity<>("emailExist",HttpStatus.CONFLICT);
         }
         // Essayons d'enregister l'utilisateur
         try {
@@ -187,7 +187,7 @@ public class AccountRessource {
         // Vérifier si l'utisateur est null
         if (user == null){
             // Si l'utilisateur est null
-            return new ResponseEntity<>("Utilisateur non trouvé !", HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>("emailNotFound", HttpStatus.BAD_REQUEST);
         }
         // sinon si l'utilisateur existe, il peut changé son mots de passe oublié
         accountService.resetPassword(user);
