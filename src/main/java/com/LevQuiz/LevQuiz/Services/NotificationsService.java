@@ -10,5 +10,4 @@ public interface NotificationsService {
 
     // une méthode qui va retourner une seule Notification
     Notifications getNotification(Notifications notifications);
-
 }

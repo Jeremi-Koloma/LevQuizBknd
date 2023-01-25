@@ -153,7 +153,7 @@ public class AccountRessource {
         // Vérifions si newPassword et confirmPassword sont différents
         if (!newPassword.equals(confirmPassword)){
             // Si les mots de passes sont différents
-            return new ResponseEntity<>("Mots passe non conforme !", HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>("PasswordNotMatched", HttpStatus.BAD_REQUEST);
         }
         // Sinon si les mots de passes sont identiques
         // Recupérons actuel mots de passe
@@ -167,7 +167,7 @@ public class AccountRessource {
                     // Si c'est les même
                      accountService.updateUserPassword(appUser, newPassword);
                 } else {
-                    return new ResponseEntity<>("Mots de passe actuel est incorrect !", HttpStatus.BAD_REQUEST);
+                    return new ResponseEntity<>("IncorrectCurrentPassword", HttpStatus.BAD_REQUEST);
                 }
                 return new ResponseEntity<>("Mots passe changé avec succès !", HttpStatus.OK);
             }
