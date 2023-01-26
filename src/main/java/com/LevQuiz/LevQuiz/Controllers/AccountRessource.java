@@ -6,11 +6,14 @@ import com.LevQuiz.LevQuiz.Models.Role;
 import com.LevQuiz.LevQuiz.Repositories.QuizRepository;
 import com.LevQuiz.LevQuiz.Services.AccountService;
 import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.Date;
 import java.util.HashMap;
@@ -18,17 +21,25 @@ import java.util.List;
 
 @RestController // Pour dire qu'il s'agit qu'il classe controller
 @RequestMapping(value = "/user") // le path ou lien dans l'url
-@AllArgsConstructor // Pour l'injections des dépendances
+@NoArgsConstructor
 public class AccountRessource {
 
     // Pour Encoder le mots de passe
+    @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     // Injectons l'interface AccountService
+    @Autowired
     private AccountService accountService;
 
     // injectons le QuizRepository
+    @Autowired
     private QuizRepository quizRepository;
+
+
+    private Long userImageId;
+
+
 
     // Une méthode pour Lister les utilisateurs
     @GetMapping("/listUsers")
@@ -124,9 +135,21 @@ public class AccountRessource {
         // Sinon si existe, alors on l'enregistre
         try {
             accountService.updateUser(user, request);
+            userImageId = user.getId();
             return new ResponseEntity<>(user, HttpStatus.OK);
         }catch (Exception e){
             return new ResponseEntity<>("Une Erreur s'est produit lors de mise en jours", HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    // Une méthode pour changer la photo de profil de l'utilisateur
+    @PostMapping("/photo/upload")
+    public ResponseEntity<String> fileUpload(@RequestParam("image") MultipartFile multipartFile) {
+        try {
+            accountService.saveUserImage(multipartFile, userImageId);
+            return new ResponseEntity<>("Profil changer !", HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>("Profil non changer !", HttpStatus.BAD_REQUEST);
         }
     }
 

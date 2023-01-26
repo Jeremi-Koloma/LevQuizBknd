@@ -14,6 +14,7 @@ import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.transaction.Transactional;
 import java.io.IOException;
@@ -143,15 +144,22 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override // implementation de la méthode qui va permettre de Modifier un utilisateur
-    public void updateUser(AppUser appUser, HashMap<String, String> request) {
-        // Récupéré le mots de passe saisi par l'utilisateur
-        String password = appUser.getPassword();
-        // Encoder le mots de passe
-        String encryptedPassword = bCryptPasswordEncoder.encode(password);
-        // attrubier le mots de passe encoder comme mots de passe de l'utilisateur
-        appUser.setPassword(encryptedPassword);
-        // Maintenant enregister les information
-        appUserRepository.save(appUser);
+    public AppUser updateUser(AppUser user, HashMap<String, String> request) {
+        // Recupérons le prenom dans la requête
+        String firstname = request.get("firstname");
+        // Recupérons le nom de famille dans requête
+        String lastname = request.get("lastname");
+        // Recupérons l'email  dans la requête
+        String email = request.get("email");
+
+        // on attribue ce prenom comme le nom de d'utilisateur
+        user.setFirstname(firstname);
+        user.setLastname(lastname);
+        user.setEmail(email);
+
+        appUserRepository.save(user);
+
+        return user;
     }
 
     @Override // implementation de la méthode qui va retouné un utilisateur par son ID
@@ -212,5 +220,24 @@ public class AccountServiceImpl implements AccountService {
         appUser.setQuizList((Quiz) quizList);
         // maintenant on enregistre l'utilisateur avec ses quiz
         return appUserRepository.save(appUser);
+    }
+
+    @Override
+    public String saveUserImage(MultipartFile multipartFile, Long userImageId) {
+        /*
+         * MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest)
+         * request; Iterator<String> it = multipartRequest.getFileNames(); MultipartFile
+         * multipartFile = multipartRequest.getFile(it.next());
+         */
+        byte[] bytes;
+        try {
+            Files.deleteIfExists(Paths.get(Constants.USER_FOLDER + "/" + userImageId + ".png"));
+            bytes = multipartFile.getBytes();
+            Path path = Paths.get(Constants.USER_FOLDER + userImageId + ".png");
+            Files.write(path, bytes);
+            return "Photo de profil enregister avec succès !";
+        } catch (IOException e) {
+            return "User picture Saved";
+        }
     }
 }

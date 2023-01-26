@@ -2,6 +2,7 @@ package com.LevQuiz.LevQuiz.Services;
 
 import com.LevQuiz.LevQuiz.Models.AppUser;
 import com.LevQuiz.LevQuiz.Models.Role;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.HashMap;
 import java.util.List;
@@ -32,7 +33,7 @@ public interface AccountService {
     Role saveRole(Role role);
 
     // Une méthode pour mèttre l'utilisateur à jours
-    void updateUser(AppUser appUser, HashMap<String, String> request);
+    AppUser updateUser(AppUser user, HashMap<String, String> request);
 
     // Une méthode qui va retourné un utilisateur par son ID
     AppUser findUserById(Long id);
@@ -54,5 +55,8 @@ public interface AccountService {
 
     // une méthode qui va permettre de jouer à un quiz
     AppUser playQuiz(Long iduser, Long idquiz);
+
+    // une méthode pour mèttre une photo de profil à jour
+    public String saveUserImage(MultipartFile multipartFile, Long userImageId);
 
 }
