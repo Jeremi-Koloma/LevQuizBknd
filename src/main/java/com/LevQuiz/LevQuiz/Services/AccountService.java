@@ -57,6 +57,7 @@ public interface AccountService {
     AppUser playQuiz(Long iduser, Long idquiz);
 
     // une méthode pour mèttre une photo de profil à jour
-    public String saveUserImage(MultipartFile multipartFile, Long userImageId);
+    String saveUserImage(MultipartFile multipartFile, Long userImageId);
+
 
 }

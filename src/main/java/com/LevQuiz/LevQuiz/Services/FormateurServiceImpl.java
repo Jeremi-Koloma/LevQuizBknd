@@ -18,6 +18,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Date;
 import java.util.HashSet;
+import java.util.Optional;
 import java.util.Set;
 
 // Cette classe va implementer le ServiceFormateur
@@ -96,4 +97,46 @@ public class FormateurServiceImpl implements FormateurService{
 
         return formateur;
     }
+
+    // Implementation de la méthode qui change le status de formateur
+    @Override
+    public Formateur changerStatusFormateur(Long id, Formateur formateur) {
+        return formateurRepository.findById(id) // S'il trouve l'ID;
+                .map(formt->{  // On fait du mappage;
+                    if (formateur.getFirstname() != null){
+                        formt.setFirstname(formateur.getFirstname());
+                    }
+
+                    if (formateur.getLastname() != null) {
+                        formt.setLastname(formateur.getLastname());
+                    }
+
+                    if (formateur.getUsername() != null){
+                        formt.setUsername(formateur.getUsername());
+                    }
+
+                    if (formateur.getEmail() != null){
+                        formt.setEmail(formateur.getEmail());
+                    }
+
+                    if (formateur.getSpecialite() != null){
+                        formt.setSpecialite(formateur.getSpecialite());
+                    }
+
+                    if (formateur.getLocalite() != null){
+                        formt.setLocalite(formateur.getLocalite());
+                    }
+
+                    if (formateur.getEntreprise() != null){
+                        formt.setEntreprise(formateur.getEntreprise());
+                    }
+
+                    if (formateur.getStatus() != null){
+                        formt.setStatus(formateur.getStatus());
+                    }
+                    return formateurRepository.save(formt);
+                }).orElseThrow(()-> new RuntimeException("Formateur non trouver"));
+    }
+
+
 }

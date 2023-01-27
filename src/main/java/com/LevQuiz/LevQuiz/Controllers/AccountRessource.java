@@ -292,6 +292,14 @@ public class AccountRessource {
 
 
 
+    // Service pour la méthode Modifier;
+    @PutMapping("/changestatus/{id}")
+    public Formateur changeStatus(@PathVariable Long id, @RequestBody Formateur formateur){
+        return formateurService.changerStatusFormateur(id, formateur); // Qui va retourné le service modifier;
+    }
+
+
+
 
 
 
