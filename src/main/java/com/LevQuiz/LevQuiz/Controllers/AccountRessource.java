@@ -1,10 +1,12 @@
 package com.LevQuiz.LevQuiz.Controllers;
 
 import com.LevQuiz.LevQuiz.Models.AppUser;
+import com.LevQuiz.LevQuiz.Models.Formateur;
 import com.LevQuiz.LevQuiz.Models.Quiz;
 import com.LevQuiz.LevQuiz.Models.Role;
 import com.LevQuiz.LevQuiz.Repositories.QuizRepository;
 import com.LevQuiz.LevQuiz.Services.AccountService;
+import com.LevQuiz.LevQuiz.Services.FormateurService;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import org.apache.commons.lang3.StringUtils;
@@ -32,9 +34,14 @@ public class AccountRessource {
     @Autowired
     private AccountService accountService;
 
+    // Injecotns l'interface FormateurService
+    @Autowired
+    private FormateurService formateurService;
+
     // injectons le QuizRepository
     @Autowired
     private QuizRepository quizRepository;
+
 
 
     private Long userImageId;
@@ -245,6 +252,47 @@ public class AccountRessource {
         accountService.addNewRole(role);
         return new ResponseEntity<String>("Role Ajouté avec succès!", HttpStatus.OK);
     }
+
+
+    /* ************************************ FORMATEUR
+
+     ******************************************** */
+    // Une méthode qui va Créer un utilisateur
+    @PostMapping("registerFormateur")
+    public ResponseEntity<?> registerFormateur(@RequestBody HashMap<String, String> request){ // RequestBody pour dire que les donnée se trouve dans le corps de la requete
+        String firstname = request.get("firstname");
+        String lastname = request.get("lastname");
+        String username = request.get("username");
+        String password = request.get("password");
+        String email = request.get("email");
+        String specialite = request.get("specialite");
+        String localite = request.get("localite");
+        String entreprise = request.get("entreprise");
+
+        // Vérifions si le non d'utilisateur existe déja
+        if (accountService.findByUsername(username) != null){
+            // si username existe,
+            return new ResponseEntity<>("usernameExist",HttpStatus.CONFLICT);
+        }
+        // vérifier si email exist
+        if (accountService.findByEmail(email) != null){
+            // Si email exist
+            return new ResponseEntity<>("emailExist",HttpStatus.CONFLICT);
+        }
+        // Essayons d'enregister le Formateur
+        try {
+            Formateur formateur = formateurService.saveFormateur(firstname,lastname,username,password,email,specialite,localite,entreprise);
+            return new ResponseEntity<>(formateur, HttpStatus.OK);
+        }
+        catch (Exception e){
+            // si ça échoue
+            return new ResponseEntity<>("Une Erreur s'est produit lors d'enregistremet de formateur", HttpStatus.BAD_REQUEST);
+        }
+    }
+
+
+
+
 
 
 }

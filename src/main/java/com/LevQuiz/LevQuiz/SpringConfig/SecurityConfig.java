@@ -20,7 +20,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     // Identifions les routes qui seront accessible sans Authetification
-    private static final String[] PUBLIC_MATCHERS = {"/user/login", "/user/register", "/user/resetPassword/**", "/image/**"};
+    private static final String[] PUBLIC_MATCHERS = {"/user/login", "/user/register", "/user/registerFormateur", "/user/resetPassword/**", "/image/**"};
 
     // injectons l'interface UserDetailsService
     private UserDetailsService userDetailsService;

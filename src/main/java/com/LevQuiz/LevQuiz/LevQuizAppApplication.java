@@ -44,6 +44,7 @@ public class LevQuizAppApplication {
 			if (roleRepository.findAll().size() == 0) {
 				// Si c'est vide, on ajoute deux Rôles USER, ADMIN
 				accountService.addNewRole(new Role(null, "USER"));
+				accountService.addNewRole((new Role(null, "FORMATEUR")));
 				accountService.addNewRole((new Role(null, "ADMIN")));
 			};
 

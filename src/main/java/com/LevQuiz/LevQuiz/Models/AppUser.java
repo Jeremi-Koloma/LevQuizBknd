@@ -1,7 +1,7 @@
 package com.LevQuiz.LevQuiz.Models;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.NoArgsConstructor;
+
 
 import javax.persistence.*;
 import java.io.Serial;
@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.Set;
 
 @Entity // Identifier cette classe comme une table dans la base de donnée
+@Inheritance(strategy = InheritanceType.JOINED) // Heritage  // Identifier cette classe comme classe mère
 public class AppUser implements Serializable {
 
     @Serial

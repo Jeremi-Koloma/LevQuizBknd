@@ -152,7 +152,7 @@ public class AccountServiceImpl implements AccountService {
         // Recupérons l'email  dans la requête
         String email = request.get("email");
 
-        // on attribue ce prenom comme le nom de d'utilisateur
+        // Modifions les données de d'utilisateur
         user.setFirstname(firstname);
         user.setLastname(lastname);
         user.setEmail(email);
