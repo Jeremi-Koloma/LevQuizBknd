@@ -4,7 +4,6 @@ import com.LevQuiz.LevQuiz.Models.AppUser;
 import com.LevQuiz.LevQuiz.Models.Quiz;
 import com.LevQuiz.LevQuiz.Services.AccountService;
 import com.LevQuiz.LevQuiz.Services.QuizService;
-import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -96,7 +95,7 @@ public class QuizRessource {
         // Vérifier si l'utilisateur existe
         if (quizService.getQuizByTitre(titre) != null){
             // Si l'utlisateur est null, n'existe pas
-            return  new ResponseEntity<>("Quiz existe déjà !", HttpStatus.CONFLICT);
+            return  new ResponseEntity<>("QuizExist", HttpStatus.CONFLICT);
         }
         if (user == null){
             // Si l'utlisateur est null, n'existe pas

@@ -40,7 +40,7 @@ public class QuestionsRessource {
         }
         // Vérifier si la question existe déjà
         if(questionsRepository.existsByQuestion(questions.getQuestion())){
-            return new ResponseEntity<>("Question existe déja !", HttpStatus.CONFLICT);
+            return new ResponseEntity<>("QuestionExist", HttpStatus.CONFLICT);
         }
         // sinon si le quiz existe, alors essayons de l'attribuer une Question
         try {
