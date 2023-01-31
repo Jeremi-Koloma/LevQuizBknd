@@ -37,7 +37,7 @@ public class ReponsesRessource {
         }
         // Vérifier si la Reponse existe déja
         if (reponsesRepository.existsByReponse(reponses.getReponse())){
-            return new ResponseEntity<>("Réponse existe déjà !", HttpStatus.CONFLICT);
+            return new ResponseEntity<>("ResponsExit", HttpStatus.CONFLICT);
         }
         // sinon si la question existe, essayons d'enregister la Reponse
         try {
