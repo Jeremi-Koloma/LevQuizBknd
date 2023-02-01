@@ -67,7 +67,7 @@ public class AccountServiceImpl implements AccountService {
         }
 
         Set<UserRole> userRoles = new HashSet<>();
-        userRoles.add(new UserRole(appUser,roleRepository.findRoleByName("USER")));
+        userRoles.add(new UserRole(appUser,roleRepository.findRoleByName("APPRENANT")));
         appUser.setUserRoles(userRoles);
         // Maintenant Enregister l'utilisateur
         appUserRepository.save(appUser);

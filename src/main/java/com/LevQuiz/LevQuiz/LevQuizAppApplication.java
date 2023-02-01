@@ -43,7 +43,7 @@ public class LevQuizAppApplication {
 			// Vérifier si la table Rôle est vide dans la base de donnée
 			if (roleRepository.findAll().size() == 0) {
 				// Si c'est vide, on ajoute deux Rôles USER, ADMIN
-				accountService.addNewRole(new Role(null, "USER"));
+				accountService.addNewRole(new Role(null, "APPRENANT"));
 				accountService.addNewRole((new Role(null, "FORMATEUR")));
 				accountService.addNewRole((new Role(null, "ADMIN")));
 			};
@@ -56,7 +56,7 @@ public class LevQuizAppApplication {
 				accountService.simpleSave(new AppUser(null, "Jeremi", "KOLOMA", "jk.koloma", pw, "kolomajeremi60@gmail.com", new Date(),null, null,null));
 
 				// Affectons des rôles aux deux à l'Admin ajouter
-				accountService.addRoleToUser("jk.koloma", "USER");
+				accountService.addRoleToUser("jk.koloma", "APPRENANT");
 				accountService.addRoleToUser("jk.koloma", "ADMIN");
 			}
 
