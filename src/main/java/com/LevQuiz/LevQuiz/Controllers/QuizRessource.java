@@ -47,8 +47,8 @@ public class QuizRessource {
 
 
     // Une méthode pour afficher un seul Quiz
-    @GetMapping("/getQuizById/{id}")
-    public ResponseEntity<?> getOneQuizById(@PathVariable("id") Long id){
+    @GetMapping("/getQuizById/{quizId}")
+    public ResponseEntity<?> getOneQuizById(@PathVariable("quizId") Long id){
         // Recupérons le le quiz
         Quiz quiz = quizService.getQuizById(id);
         // vérifions si le Quiz est nul, n'existe pas
