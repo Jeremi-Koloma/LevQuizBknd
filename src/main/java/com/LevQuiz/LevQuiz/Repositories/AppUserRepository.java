@@ -23,4 +23,14 @@ public interface AppUserRepository extends JpaRepository<AppUser, Long> {
     // Retourner une liste des utilisateurs pour un champs de recherche l'utilisateur
     List<AppUser> findByUsernameContaining(String username);
 
+
+    //  la méthode qui affiche uniquement les Apprenants
+    @Query(value = "SELECT app_user.*,role.* FROM app_user,role,user_role WHERE app_user.id = user_role.user_id and role.role_id = user_role.role_id and role.name=\"APPRENANT\";", nativeQuery = true)
+    List<Object> studentList();
+
+
+    //  la méthode qui affiche uniquement les Formateurs
+    @Query(value = "SELECT app_user.*,role.* FROM app_user,role,user_role WHERE app_user.id = user_role.user_id and role.role_id = user_role.role_id and role.name=\"FORMATEUR\";", nativeQuery = true)
+    List<Object> formateurList();
+
 }

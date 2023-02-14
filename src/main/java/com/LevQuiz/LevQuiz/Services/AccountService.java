@@ -20,6 +20,12 @@ public interface AccountService {
     // Une méthode qui va retourné une liste d'utilisateurs
     List<AppUser> userList();
 
+    // Une méthode qui va retourné une liste des Apprenant
+    List<Object> studentList();
+
+    // Une méthode qui va retourné une liste des Apprenant
+    List<Object> formateurList();
+
     // Une méthode qui va retourné un Role d'utilisateur
     Role findUserRoleByName(String role);
 

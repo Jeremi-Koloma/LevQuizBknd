@@ -62,6 +62,36 @@ public class AccountRessource {
     }
 
 
+    // Une méthode pour Lister les Apprenants
+    @GetMapping("/listApprenant")
+    public ResponseEntity<?> getStudentList(){
+        List<Object> studentList = accountService.studentList();
+        // Vérifier si la liste est vide
+        if (studentList.isEmpty()){
+            // Vérifier si la liste est vide
+            return new ResponseEntity<>("Auccun Apprenant trouver !",HttpStatus.OK);
+        }
+        // Sinon s'il y'a quelque choses on retourne la liste des utiilsateurs
+        return new ResponseEntity<>(studentList, HttpStatus.OK);
+    }
+
+
+    // Une méthode pour Lister les Formateur
+    @GetMapping("/listFormateur")
+    public ResponseEntity<?> getFormateur(){
+        List<Object> formateurList = accountService.formateurList();
+        // Vérifier si la liste est vide
+        if (formateurList.isEmpty()){
+            // Vérifier si la liste est vide
+            return new ResponseEntity<>("Auccun Formateur trouver !",HttpStatus.OK);
+        }
+        // Sinon s'il y'a quelque choses on retourne la liste des utiilsateurs
+        return new ResponseEntity<>(formateurList, HttpStatus.OK);
+    }
+
+
+
+
     // Une méthode pour trouver un seul utilisateur
     @GetMapping("/{username}")
     public ResponseEntity<?> getUserInfo(@PathVariable("username") String username){

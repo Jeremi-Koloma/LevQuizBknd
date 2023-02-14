@@ -103,6 +103,16 @@ public class AccountServiceImpl implements AccountService {
         return appUserRepository.findAll();
     }
 
+    @Override // Implementation de la méthode qui affiche uniquement les Apprenants
+    public List<Object> studentList() {
+        return appUserRepository.studentList();
+    }
+
+    @Override // Implementation de la méthode qui affiche uniquement les Formateurs
+    public List<Object> formateurList() {
+        return appUserRepository.formateurList();
+    }
+
     @Override // implementation de la méthode qui va retourné un Role par son nom
     public Role findUserRoleByName(String name) {
         return roleRepository.findRoleByName(name);

@@ -6,6 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="1a2214e6-822e-4e6c-9522-5510a335b930" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/LevQuiz/LevQuiz/Controllers/AccountRessource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/LevQuiz/LevQuiz/Controllers/AccountRessource.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/LevQuiz/LevQuiz/Repositories/AppUserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/LevQuiz/LevQuiz/Repositories/AppUserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/LevQuiz/LevQuiz/Services/AccountService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/LevQuiz/LevQuiz/Services/AccountService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/LevQuiz/LevQuiz/Services/AccountServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/LevQuiz/LevQuiz/Services/AccountServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -90,5 +94,15 @@
       <updated>1672834014935</updated>
     </task>
     <servers />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.sql.SQLException" package="java.sql" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
