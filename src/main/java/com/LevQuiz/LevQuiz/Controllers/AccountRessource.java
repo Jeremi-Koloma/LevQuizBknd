@@ -90,6 +90,20 @@ public class AccountRessource {
     }
 
 
+    // Une méthode pour Lister les Formateur non Activer
+    @GetMapping("/listFormateurStatusNoActive")
+    public ResponseEntity<?> getFormateurNoActive(){
+        List<Object> formateurListNoActive = accountService.formateurListNoActive();
+        // Vérifier si la liste est vide
+        if (formateurListNoActive.isEmpty()){
+            // Vérifier si la liste est vide
+            return new ResponseEntity<>("Auccun Formateur trouver !",HttpStatus.OK);
+        }
+        // Sinon s'il y'a quelque choses on retourne la liste des utiilsateurs
+        return new ResponseEntity<>(formateurListNoActive, HttpStatus.OK);
+    }
+
+
 
 
     // Une méthode pour trouver un seul utilisateur
@@ -324,7 +338,8 @@ public class AccountRessource {
 
     // Service pour la méthode Modifier;
     @PutMapping("/changestatus/{id}")
-    public Formateur changeStatus(@PathVariable Long id, @RequestBody Formateur formateur){
+    public Formateur changeStatus(@PathVariable Long id, Formateur formateur){
+        formateur.setStatus(true);
         return formateurService.changerStatusFormateur(id, formateur); // Qui va retourné le service modifier;
     }
 

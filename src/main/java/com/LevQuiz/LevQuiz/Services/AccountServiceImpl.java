@@ -113,6 +113,11 @@ public class AccountServiceImpl implements AccountService {
         return appUserRepository.formateurList();
     }
 
+    @Override // Implementation de la méthode qui affiche uniquement les Formateurs non Activer
+    public List<Object> formateurListNoActive() {
+        return appUserRepository.formateurListNoActive();
+    }
+
     @Override // implementation de la méthode qui va retourné un Role par son nom
     public Role findUserRoleByName(String name) {
         return roleRepository.findRoleByName(name);

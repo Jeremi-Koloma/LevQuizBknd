@@ -23,8 +23,11 @@ public interface AccountService {
     // Une méthode qui va retourné une liste des Apprenant
     List<Object> studentList();
 
-    // Une méthode qui va retourné une liste des Apprenant
+    // Une méthode qui va retourné une liste des Formateurs
     List<Object> formateurList();
+
+    // Une méthode qui va retourné une liste des Formateurs non Activer
+    List<Object> formateurListNoActive();
 
     // Une méthode qui va retourné un Role d'utilisateur
     Role findUserRoleByName(String role);

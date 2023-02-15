@@ -133,6 +133,9 @@ public class FormateurServiceImpl implements FormateurService{
                     if (formateur.getStatus() != null){
                         formt.setStatus(formateur.getStatus());
                     }
+                    // Mais Envoyé un mail à l'utilisateur pour l'informer que son compte a été activé
+                    mailSender.send(emailConstructor.constructActiveCompteEmail(formt));
+
                     return formateurRepository.save(formt);
                 }).orElseThrow(()-> new RuntimeException("Formateur non trouver"));
     }

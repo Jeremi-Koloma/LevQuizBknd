@@ -33,4 +33,9 @@ public interface AppUserRepository extends JpaRepository<AppUser, Long> {
     @Query(value = "SELECT app_user.*,role.* FROM app_user,role,user_role WHERE app_user.id = user_role.user_id and role.role_id = user_role.role_id and role.name=\"FORMATEUR\";", nativeQuery = true)
     List<Object> formateurList();
 
+
+    //  la méthode qui affiche uniquement les Formateurs dont leur status n'est pas valider
+    @Query(value = "SELECT app_user.id,app_user.firstname,app_user.lastname,formateur.status FROM `app_user`,formateur WHERE app_user.id=formateur.id and formateur.status = false;", nativeQuery = true)
+    List<Object> formateurListNoActive();
+
 }
