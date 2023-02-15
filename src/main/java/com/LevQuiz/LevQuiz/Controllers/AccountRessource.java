@@ -344,6 +344,12 @@ public class AccountRessource {
     }
 
 
+    // Une méthode pour supprimer un utilisateur
+    @DeleteMapping("/delete/{idUser}") // La requête (DELETE) idRegion;
+    public String delete(@PathVariable Long idUser){
+        return accountService.supprimer(idUser); // Qui va retourné le service supprimer;
+    }
+
 
 
 

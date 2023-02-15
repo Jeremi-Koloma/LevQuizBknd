@@ -182,10 +182,12 @@ public class AccountServiceImpl implements AccountService {
         return appUserRepository.findUserById(id);
     }
 
-    @Override // implementation de la méthode qui supprime user
-    public void deleteUser(AppUser appUser) {
-        appUserRepository.delete(appUser);
+    @Override
+    public String supprimer(Long idUser) {
+        appUserRepository.deleteById(idUser);
+        return "userSupprimer";
     }
+
 
     @Override
     public void updateUserPassword(AppUser appUser, String newPassword) {

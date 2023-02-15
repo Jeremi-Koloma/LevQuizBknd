@@ -47,8 +47,8 @@ public interface AccountService {
     // Une méthode qui va retourné un utilisateur par son ID
     AppUser findUserById(Long id);
 
-    // Une méthode pour supprimer un utilisateur avec actuel utilisateur en paramètre
-    void deleteUser(AppUser appUser);
+    // Une méthode va retourné String qui va prendre en param (idRegion) à supprimer; // methode DELECTE
+    String supprimer(Long idUser);
 
     // Une méthode pour Changer le mots de passe d'un utilisateur avec actuel utilisateur en paramètre
     void updateUserPassword(AppUser appUser, String newPassword);

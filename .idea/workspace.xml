@@ -7,11 +7,29 @@
     <list default="true" id="1a2214e6-822e-4e6c-9522-5510a335b930" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/LevQuiz/LevQuiz/Controllers/AccountRessource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/LevQuiz/LevQuiz/Controllers/AccountRessource.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/LevQuiz/LevQuiz/Repositories/AppUserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/LevQuiz/LevQuiz/Repositories/AppUserRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/LevQuiz/LevQuiz/Services/AccountService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/LevQuiz/LevQuiz/Services/AccountService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/LevQuiz/LevQuiz/Services/AccountServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/LevQuiz/LevQuiz/Services/AccountServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/LevQuiz/LevQuiz/Services/FormateurServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/LevQuiz/LevQuiz/Services/FormateurServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/LevQuiz/LevQuiz/Utility/EmailConstructor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/LevQuiz/LevQuiz/Utility/EmailConstructor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/image/profiluser/1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/image/profiluser/2.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/image/profiluser/2.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/image/profiluser/4.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/image/profiluser/4.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/image/profiluser/null.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/image/quizs/DGSGwYeaCe.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/image/quizs/DtyQWuVstw.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/image/quizs/JsmXodgQvt.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/image/quizs/LPTOIqPwsL.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/image/quizs/fazhElusZS.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/image/quizs/xPoggskbeB.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/LevQuiz/LevQuiz/Services/FormateurServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/LevQuiz/LevQuiz/Services/FormateurServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/image/profiluser/1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/image/profiluser/2.png" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/image/profiluser/2.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/image/profiluser/4.png" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/image/profiluser/4.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/image/profiluser/null.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/image/quizs/DGSGwYeaCe.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/image/quizs/DtyQWuVstw.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/image/quizs/JsmXodgQvt.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/image/quizs/LPTOIqPwsL.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/image/quizs/fazhElusZS.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/image/quizs/xPoggskbeB.png" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,7 +75,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "last_opened_file_path": "C:/Users/jkkoloma/Downloads/LevQuizBknd/src/main/resources/templates",
+    "last_opened_file_path": "C:/Users/jkkoloma/Downloads/LevQuizBknd",
     "settings.editor.selected.configurable": "reference.settings.project.maven.repository.indices"
   }
 }]]></component>
