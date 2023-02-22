@@ -9,6 +9,9 @@ import com.LevQuiz.LevQuiz.Repositories.ScoreRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.Objects;
+
 @Service
 @AllArgsConstructor
 public class ScoreServiceImpl implements ScoreService{
@@ -17,7 +20,22 @@ public class ScoreServiceImpl implements ScoreService{
     private final QuizRepository quizRepository;
 
     @Override
-    public Scores saveScore(Scores scores, Long userid, Long quizid) {
-        return scoreRepository.save(scores);
+    public Scores saveScore(Long scores, Long userid, Long quizid) {
+        // Recupérons les id dans les repository
+        AppUser appUser = appUserRepository.findUserById(userid);
+        Quiz quiz = quizRepository.findQuizById(quizid);
+
+        Scores scores1 = new Scores();
+        scores1.setScore(scores);
+        scores1.setAppUser(appUser);
+        scores1.setQuiz(quiz);
+
+        return scoreRepository.save(scores1);
+    }
+
+
+    @Override
+    public List<Object> findUserScores(Long userid) {
+        return scoreRepository.Userscores(userid);
     }
 }

@@ -25,13 +25,11 @@ public class ScoresRessource {
     private AppUserRepository appUserRepository;
 
 
-    @PostMapping("/save/{userid}/{quizid}")
-    public ResponseEntity<?> saveScore(@RequestBody Scores scores, @PathVariable Long userid, @PathVariable Long quizid){ // RequestBody pour dire que les donnée se trouve dans le corps de la requete
+    @PostMapping("/save/{scores}/{userid}/{quizid}")
+    public ResponseEntity<?> saveScore(@PathVariable Long scores, @PathVariable Long userid, @PathVariable Long quizid){ // RequestBody pour dire que les donnée se trouve dans le corps de la requete
 
         AppUser appUser = accountService.findUserById(userid);
         Quiz quiz = quizService.getQuizById(quizid);
-
-
 
 
       if(appUser == null){
@@ -50,5 +48,33 @@ public class ScoresRessource {
           return new ResponseEntity<>("Erreur", HttpStatus.BAD_REQUEST);
       }
     }
+
+
+
+
+    //Une méthode pour avoir la liste de tous les quiz créer par un utilisateur
+    @GetMapping("/userScores/{userid}")
+    public ResponseEntity<?> getUserScores(@PathVariable("userid") Long userid ){
+        // Recupérer l'utilsateur par son id
+        AppUser user = accountService.findUserById(userid);
+        // Vérifier si l'utilisateur existe
+        if (user == null){
+            // Si l'utlisateur est null, n'existe pas
+            return  new ResponseEntity<>("Utilisateur n'existe pas !", HttpStatus.NOT_FOUND);
+        }
+        // Sinon s'il existe essayons de retourner tous les scores de l'utilsateur
+        try {
+            // recupérer la liste des scores de l'utilisateur
+            List<Object> scoresList = scoreService.findUserScores(userid);
+            return  new ResponseEntity<>(scoresList, HttpStatus.OK);
+        }
+        catch (Exception e){
+            // Sinon si ça échoue
+            return  new ResponseEntity<>("Une Erreur s'est produit lors de l'Affichage des scores de l'utilisateur", HttpStatus.BAD_REQUEST);
+        }
+    }
+
+
+
 
 }
