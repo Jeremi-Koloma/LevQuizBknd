@@ -35,6 +35,9 @@ public class Quiz implements Serializable {
     @OneToMany(mappedBy = "quiz", cascade = CascadeType.ALL)
     List<Questions> questionsList;
 
+    @OneToMany(mappedBy = "quiz", cascade = CascadeType.ALL)
+    List<Scores> scoresList;
+
 
     // ****************************    Plus la peine pour la liaison car seule Username peut Gérér    ************************
 

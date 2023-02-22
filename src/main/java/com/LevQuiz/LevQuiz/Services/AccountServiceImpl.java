@@ -234,7 +234,7 @@ public class AccountServiceImpl implements AccountService {
         // Ajoutons le quiz recupéré à la liste de quiz de l'utilisateur
         quizList.add(quiz);
         // Retournons cette liste de quiz à l'utilisateur
-        appUser.setQuizList((Quiz) quizList);
+        //appUser.setQuizList((Quiz) quizList);
         // maintenant on enregistre l'utilisateur avec ses quiz
         return appUserRepository.save(appUser);
     }

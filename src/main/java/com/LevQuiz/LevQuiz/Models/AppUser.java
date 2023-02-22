@@ -44,6 +44,9 @@ public class AppUser implements Serializable {
     @OneToMany(mappedBy = "appUser", cascade = CascadeType.ALL, fetch = FetchType.EAGER) // un utilisateur peut avoir un ou plusieurs userRoles (1..*)
     private Set<UserRole> userRoles = new HashSet<>();
 
+    @OneToMany(mappedBy = "appUser", cascade = CascadeType.ALL)
+    private List<Scores> scoresList;
+
     // cascade, quand on supprime un utilisateur, on le supprime avec ses Notifications aussi
     // FetchType.LAZY, en chargent l'utilisateur, n'affiche pas ses Notifications
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY) // un utilisateur peut avoir plusieurs Notifications vise vers ça
@@ -62,7 +65,7 @@ public class AppUser implements Serializable {
     }
 
     // constructeur avce tous les paramètres
-    public AppUser(Long id, String firstname, String lastname, String username, String password, String email, Date createdDate, Set<UserRole> userRoles, List<Notifications> notificationsList, List<Quiz> quizList) {
+    public AppUser(Long id, String firstname, String lastname, String username, String password, String email, Date createdDate, Set<UserRole> userRoles, List<Notifications> notificationsList, List<Quiz> quizList, List<Scores> scoresList) {
         this.id = id;
         this.firstname = firstname;
         this.lastname = lastname;
@@ -73,6 +76,7 @@ public class AppUser implements Serializable {
         this.userRoles = userRoles;
         this.notificationsList = notificationsList;
         this.quizList = quizList;
+        this.scoresList = scoresList;
     }
 
     public Long getId() {
@@ -153,5 +157,13 @@ public class AppUser implements Serializable {
 
     public void setQuizList(Quiz quizList) {
         this.quizList.add(quizList);
+    }
+
+    public List<Scores> getScoresList() {
+        return scoresList;
+    }
+
+    public void setScoresList(Scores scoresList) {
+        this.scoresList.add(scoresList);
     }
 }

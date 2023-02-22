@@ -6,9 +6,149 @@
   <component name="ChangeListManager">
     <list default="true" id="1a2214e6-822e-4e6c-9522-5510a335b930" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/LevQuiz/LevQuiz/Controllers/AccountRessource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/LevQuiz/LevQuiz/Controllers/AccountRessource.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/LevQuiz/LevQuiz/Repositories/AppUserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/LevQuiz/LevQuiz/Repositories/AppUserRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/image/profiluser/9.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/image/profiluser/9.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/LevQuiz/LevQuiz/LevQuizAppApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/LevQuiz/LevQuiz/LevQuizAppApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/LevQuiz/LevQuiz/Models/AppUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/LevQuiz/LevQuiz/Models/AppUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/LevQuiz/LevQuiz/Models/Quiz.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/LevQuiz/LevQuiz/Models/Quiz.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/LevQuiz/LevQuiz/Models/Scores.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/LevQuiz/LevQuiz/Models/Scores.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/LevQuiz/LevQuiz/Services/AccountServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/LevQuiz/LevQuiz/Services/AccountServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/LevQuiz/LevQuiz/Services/ReponseServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/LevQuiz/LevQuiz/Services/ReponseServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/image/profiluser/1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/image/profiluser/10.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/image/profiluser/11.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/image/profiluser/12.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/image/profiluser/13.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/image/profiluser/14.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/image/profiluser/15.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/image/profiluser/16.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/image/profiluser/17.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/image/profiluser/18.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/image/profiluser/19.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/image/profiluser/2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/image/profiluser/20.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/image/profiluser/21.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/image/profiluser/22.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/image/profiluser/23.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/image/profiluser/24.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/image/profiluser/25.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/image/profiluser/26.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/image/profiluser/27.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/image/profiluser/28.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/image/profiluser/29.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/image/profiluser/3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/image/profiluser/30.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/image/profiluser/31.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/image/profiluser/32.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/image/profiluser/33.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/image/profiluser/34.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/image/profiluser/35.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/image/profiluser/36.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/image/profiluser/37.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/image/profiluser/38.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/image/profiluser/39.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/image/profiluser/4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/image/profiluser/40.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/image/profiluser/41.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/image/profiluser/42.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/image/profiluser/43.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/image/profiluser/44.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/image/profiluser/45.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/image/profiluser/46.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/image/profiluser/47.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/image/profiluser/48.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/image/profiluser/49.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/image/profiluser/5.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/image/profiluser/50.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/image/profiluser/51.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/image/profiluser/52.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/image/profiluser/53.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/image/profiluser/54.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/image/profiluser/55.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/image/profiluser/56.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/image/profiluser/57.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/image/profiluser/58.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/image/profiluser/59.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/image/profiluser/6.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/image/profiluser/60.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/image/profiluser/61.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/image/profiluser/62.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/image/profiluser/63.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/image/profiluser/64.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/image/profiluser/7.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/image/profiluser/8.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/image/profiluser/9.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/image/quizs/CkSsnkgNsh.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/image/quizs/ZUZTomYIBb.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/image/quizs/wIxMPasFHr.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/LevQuiz/LevQuiz/LevQuizAppApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/LevQuiz/LevQuiz/LevQuizAppApplication.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/LevQuiz/LevQuiz/Models/AppUser.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/LevQuiz/LevQuiz/Models/AppUser.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/LevQuiz/LevQuiz/Models/Quiz.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/LevQuiz/LevQuiz/Models/Quiz.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/LevQuiz/LevQuiz/Models/Scores.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/LevQuiz/LevQuiz/Models/Scores.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/image/profiluser/1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/image/profiluser/10.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/image/profiluser/11.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/image/profiluser/12.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/image/profiluser/13.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/image/profiluser/14.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/image/profiluser/15.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/image/profiluser/16.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/image/profiluser/17.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/image/profiluser/18.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/image/profiluser/19.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/image/profiluser/20.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/image/profiluser/21.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/image/profiluser/22.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/image/profiluser/23.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/image/profiluser/24.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/image/profiluser/25.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/image/profiluser/26.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/image/profiluser/27.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/image/profiluser/28.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/image/profiluser/29.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/image/profiluser/3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/image/profiluser/30.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/image/profiluser/31.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/image/profiluser/32.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/image/profiluser/33.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/image/profiluser/34.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/image/profiluser/35.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/image/profiluser/36.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/image/profiluser/37.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/image/profiluser/38.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/image/profiluser/39.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/image/profiluser/4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/image/profiluser/40.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/image/profiluser/41.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/image/profiluser/42.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/image/profiluser/43.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/image/profiluser/44.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/image/profiluser/45.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/image/profiluser/46.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/image/profiluser/47.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/image/profiluser/48.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/image/profiluser/49.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/image/profiluser/5.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/image/profiluser/50.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/image/profiluser/51.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/image/profiluser/52.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/image/profiluser/53.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/image/profiluser/54.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/image/profiluser/55.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/image/profiluser/56.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/image/profiluser/57.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/image/profiluser/58.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/image/profiluser/59.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/image/profiluser/6.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/image/profiluser/60.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/image/profiluser/61.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/image/profiluser/62.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/image/profiluser/63.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/image/profiluser/64.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/image/profiluser/7.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/image/profiluser/8.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/image/profiluser/9.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/image/quizs/CkSsnkgNsh.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/image/quizs/ZUZTomYIBb.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/image/quizs/wIxMPasFHr.png" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,8 +159,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="HTML File" />
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -48,16 +188,16 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/jkkoloma/Downloads/LevQuizBknd&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.repository.indices&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "last_opened_file_path": "/Users/jeremikoloma/Downloads/LevQuizBknd",
+    "settings.editor.selected.configurable": "reference.settings.project.maven.repository.indices"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\jkkoloma\Downloads\LevQuizBknd\src\main\resources\templates" />
@@ -66,7 +206,7 @@
   <component name="RunManager">
     <configuration name="LevQuizAppApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.LevQuiz.LevQuiz.LevQuizAppApplication" />
-      <module name="LevQuizBknd" />
+      <module name="LevQuiz" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.LevQuiz.LevQuiz.*" />
@@ -93,6 +233,17 @@
       <updated>1672834014935</updated>
     </task>
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

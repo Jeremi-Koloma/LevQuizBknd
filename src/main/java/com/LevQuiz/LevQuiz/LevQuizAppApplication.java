@@ -53,7 +53,7 @@ public class LevQuizAppApplication {
 				// Ajoutons un Admin par defaut
 				UserRole userRole=new UserRole();
 				String pw=bCryptPasswordEncoder().encode("1234");
-				accountService.simpleSave(new AppUser(null, "Jeremi", "KOLOMA", "jk.koloma", pw, "kolomajeremi60@gmail.com", new Date(),null, null,null));
+				accountService.simpleSave(new AppUser(null, "Jeremi", "KOLOMA", "jk.koloma", pw, "kolomajeremi60@gmail.com", new Date(),null, null,null,null));
 
 				// Affectons des rôles aux deux à l'Admin ajouter
 				accountService.addRoleToUser("jk.koloma", "APPRENANT");
