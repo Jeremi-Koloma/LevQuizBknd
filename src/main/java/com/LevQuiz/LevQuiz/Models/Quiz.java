@@ -1,5 +1,6 @@
 package com.LevQuiz.LevQuiz.Models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -42,6 +43,7 @@ public class Quiz implements Serializable {
     // ****************************    Plus la peine pour la liaison car seule Username peut Gérér    ************************
 
     // FetchType.EAGER, en chargent le Quiz, affiche l'utilisateur aussi
+    //@JsonIgnore
     //@ManyToOne(fetch = FetchType.EAGER) // Plusieurs Quiz peuvent être créer par un seul utilisateur (*..1)
     //private AppUser appUser;
 

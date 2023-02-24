@@ -77,4 +77,29 @@ public class ScoresRessource {
 
 
 
+
+    //Une méthode pour avoir la liste de tous les quiz créer par un utilisateur
+    @GetMapping("/userScoresByQuiz/{quizid}")
+    public ResponseEntity<?> userScoresByQuiz(@PathVariable("quizid") Long quizid ){
+        // Recupérer l'utilsateur par son id
+       Quiz quiz = quizService.getQuizById(quizid);
+        // Vérifier si l'utilisateur existe
+        if (quiz == null){
+            // Si l'utlisateur est null, n'existe pas
+            return  new ResponseEntity<>("Quiz non trouver !", HttpStatus.NOT_FOUND);
+        }
+        // Sinon s'il existe essayons de retourner tous les scores de l'utilsateur
+        try {
+            // recupérer la liste des scores de l'utilisateur
+            List<Object> scoresListe = scoreService.getUsersScoreByQuiz(quizid);
+            return  new ResponseEntity<>(scoresListe, HttpStatus.OK);
+        }
+        catch (Exception e){
+            // Sinon si ça échoue
+            return  new ResponseEntity<>("Une Erreur s'est produit lors de l'Affichage des scores de l'utilisateur", HttpStatus.BAD_REQUEST);
+        }
+    }
+
+
+
 }

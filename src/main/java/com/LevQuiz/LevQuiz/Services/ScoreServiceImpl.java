@@ -9,6 +9,7 @@ import com.LevQuiz.LevQuiz.Repositories.ScoreRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
@@ -27,6 +28,11 @@ public class ScoreServiceImpl implements ScoreService{
 
         Scores scores1 = new Scores();
         scores1.setScore(scores);
+        scores1.setUsername(appUser.getUsername());
+        scores1.setQuiztire(quiz.getTitre());
+        if (scores1.getScoreDate() == null){
+            scores1.setScoreDate(new Date());
+        }
         scores1.setAppUser(appUser);
         scores1.setQuiz(quiz);
 
@@ -37,5 +43,10 @@ public class ScoreServiceImpl implements ScoreService{
     @Override
     public List<Object> findUserScores(Long userid) {
         return scoreRepository.Userscores(userid);
+    }
+
+    @Override
+    public List<Object> getUsersScoreByQuiz(Long idquiz) {
+        return scoreRepository.getUserScoresByQuiz(idquiz);
     }
 }

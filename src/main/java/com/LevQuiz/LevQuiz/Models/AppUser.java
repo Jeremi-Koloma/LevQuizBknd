@@ -57,7 +57,6 @@ public class AppUser implements Serializable {
     @JoinTable(name = "jeux",
             joinColumns = @JoinColumn(name = "id_user"),
             inverseJoinColumns = @JoinColumn(name = "id_quiz"))
-
     private List<Quiz> quizList;
 
     // constructeur sans argument
