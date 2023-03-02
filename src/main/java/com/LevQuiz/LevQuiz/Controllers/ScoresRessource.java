@@ -25,23 +25,23 @@ public class ScoresRessource {
     private AppUserRepository appUserRepository;
 
 
-    @PostMapping("/save/{scores}/{userid}/{quizid}")
-    public ResponseEntity<?> saveScore(@PathVariable Long scores, @PathVariable Long userid, @PathVariable Long quizid){ // RequestBody pour dire que les donnée se trouve dans le corps de la requete
+    @PostMapping("/save/{scores}/{correctanswer}/{incorrectanswer}/{totalquestions}/{userid}/{quizid}")
+    public ResponseEntity<?> saveScore(@PathVariable Long scores, @PathVariable Long correctanswer, @PathVariable Long incorrectanswer, @PathVariable Long totalquestions, @PathVariable Long userid, @PathVariable Long quizid){ // RequestBody pour dire que les donnée se trouve dans le corps de la requete
 
         AppUser appUser = accountService.findUserById(userid);
         Quiz quiz = quizService.getQuizById(quizid);
 
-
+        // Vérifier que l'utilisateur existe
       if(appUser == null){
           return new ResponseEntity<>("UserNotExit", HttpStatus.NOT_FOUND);
       }
-
+        // Vérifier que le Quiz existe
         if(quiz == null){
             return new ResponseEntity<>("QuizNotExit", HttpStatus.NOT_FOUND);
         }
-
+        // Enregistrons le Score
       try {
-          scoreService.saveScore(scores, userid, quizid);
+          scoreService.saveScore(scores, correctanswer, incorrectanswer, totalquestions, userid, quizid);
           return new ResponseEntity<>("score ok", HttpStatus.OK);
       }
       catch (Exception e){

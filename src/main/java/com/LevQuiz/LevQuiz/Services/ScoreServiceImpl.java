@@ -21,7 +21,7 @@ public class ScoreServiceImpl implements ScoreService{
     private final QuizRepository quizRepository;
 
     @Override
-    public Scores saveScore(Long scores, Long userid, Long quizid) {
+    public Scores saveScore(Long scores,Long correctanswer,Long incorrectanswer, Long totalquestions, Long userid, Long quizid) {
         // Recupérons les id dans les repository
         AppUser appUser = appUserRepository.findUserById(userid);
         Quiz quiz = quizRepository.findQuizById(quizid);
@@ -30,6 +30,10 @@ public class ScoreServiceImpl implements ScoreService{
         scores1.setScore(scores);
         scores1.setUsername(appUser.getUsername());
         scores1.setQuiztire(quiz.getTitre());
+        scores1.setDescription(quiz.getDescription());
+        scores1.setCorrectanswer(correctanswer);
+        scores1.setIncorrectanswer(incorrectanswer);
+        scores1.setTotalquestions(totalquestions);
         if (scores1.getScoreDate() == null){
             scores1.setScoreDate(new Date());
         }

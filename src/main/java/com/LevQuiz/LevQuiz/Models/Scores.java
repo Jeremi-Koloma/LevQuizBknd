@@ -21,11 +21,12 @@ public class Scores {
     private Long id;
 
     private Long score;
-
     private String username;
-
     private String quiztire;
-
+    private String description;
+    private Long correctanswer;
+    private Long incorrectanswer;
+    private Long totalquestions;
     private Date scoreDate;
 
     @ManyToOne
