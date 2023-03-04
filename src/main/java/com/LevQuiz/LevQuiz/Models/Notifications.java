@@ -28,5 +28,6 @@ public class Notifications implements Serializable {
 
     private String notification;
     private Date notificationDate;
+    private Boolean etat;
 
 }

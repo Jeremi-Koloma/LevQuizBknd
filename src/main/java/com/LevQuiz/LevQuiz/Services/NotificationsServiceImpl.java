@@ -25,6 +25,33 @@ public class NotificationsServiceImpl implements NotificationsService {
 
     @Override
     public Notifications getNotification(Notifications notifications) {
+        notifications.setEtat(true);
         return notificationsRepository.save(notifications);
+    }
+
+    @Override
+    public String supprimer(Long idNotification) {
+        notificationsRepository.deleteNotificationsById(idNotification);
+        return "Notification supprimer";
+    }
+
+    @Override
+    public Notifications changerEtatNotification(Long id, Notifications notifications) {
+        return notificationsRepository.findById(id)
+                .map(notif->{
+                    if (notifications.getTitrequiz() != null){
+                        notif.setTitrequiz(notifications.getTitrequiz());
+                    }
+                    if (notifications.getNotification() != null){
+                        notif.setNotification(notifications.getNotification());
+                    }
+                    if (notifications.getNotificationDate() != null){
+                        notif.setNotificationDate(notifications.getNotificationDate());
+                    }
+                    if (notifications.getEtat() != null){
+                        notif.setEtat(notifications.getEtat());
+                    }
+                    return notificationsRepository.save(notif);
+                }).orElseThrow(()-> new RuntimeException("Notification non trouver"));
     }
 }

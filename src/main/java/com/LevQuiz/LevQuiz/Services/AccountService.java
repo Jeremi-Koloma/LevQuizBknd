@@ -47,7 +47,7 @@ public interface AccountService {
     // Une méthode qui va retourné un utilisateur par son ID
     AppUser findUserById(Long id);
 
-    // Une méthode va retourné String qui va prendre en param (idRegion) à supprimer; // methode DELECTE
+    // Une méthode va retourné String qui va prendre en param (idUser) à supprimer; // methode DELECTE
     String supprimer(Long idUser);
 
     // Une méthode pour Changer le mots de passe d'un utilisateur avec actuel utilisateur en paramètre

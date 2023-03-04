@@ -118,7 +118,7 @@ public class QuizServiceImpl implements QuizService{
         // Maintenant affectons le Quiz à l'utilisateur
         quiz.setUsername(username);
         // une variable pour le message
-        String message = username +"! On vous a assigner un nouveau Quiz intutile: "+ quiz.getTitre();
+        String message = "Bonjour "+username+" ! Votre formateur vous a assigné un nouveau Quiz";
         // Création d'un object notification pour affecter le message à notification
         Notifications notifications = new Notifications();
         notifications.setNotification(message);
@@ -127,6 +127,7 @@ public class QuizServiceImpl implements QuizService{
         // Affectons la date d'assignation, à la date de notification
         notifications.setNotificationDate(date);
         notifications.setTitrequiz(quiz.getTitre());
+        notifications.setEtat(true);
         // Créeons une liste de notification pour avoir une liste de notifications
         List<Notifications> notificationsList = appUser.getNotificationsList();
         notificationsList.add(notifications);

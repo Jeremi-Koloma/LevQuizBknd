@@ -2,6 +2,7 @@ package com.LevQuiz.LevQuiz.Repositories;
 
 import com.LevQuiz.LevQuiz.Models.Notifications;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
@@ -13,4 +14,7 @@ public interface NotificationsRepository extends JpaRepository<Notifications, Lo
     // Une méthode qui va retourné une liste de notifications par odre recent
     @Query(value = "SELECT * FROM notifications ORDER BY notification_date DESC;", nativeQuery = true)
     List<Notifications> findAll();
+
+    @Modifying
+    void deleteNotificationsById(Long id);
 }

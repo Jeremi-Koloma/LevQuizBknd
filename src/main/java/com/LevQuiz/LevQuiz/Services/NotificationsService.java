@@ -10,4 +10,9 @@ public interface NotificationsService {
 
     // une méthode qui va retourner une seule Notification
     Notifications getNotification(Notifications notifications);
+
+    // Une méthode va retourné String qui va prendre en param (idNotification) à supprimer; // methode DELECTE
+    String supprimer(Long idNotification);
+
+    Notifications changerEtatNotification(Long id, Notifications notifications);
 }
